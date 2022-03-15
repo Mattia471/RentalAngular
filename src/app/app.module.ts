@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsersService } from './service.service';
 import {RouterModule, Routes} from "@angular/router";
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import {HttpClientModule} from "@angular/common/http";
+
 
 
 const routes: Routes = [
@@ -28,7 +32,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   exports:[
     RouterModule

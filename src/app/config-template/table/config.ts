@@ -8,7 +8,8 @@ export class MyTableConfig {
 
 //array dati
 export class MyArray {
-  id!: string;
+  id!: number;
+  key!: string;
   name!: string;
 }
 
