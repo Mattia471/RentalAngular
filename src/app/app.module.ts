@@ -9,6 +9,12 @@ import { TableComponent } from './table/table.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsersService } from './service.service';
+import {RouterModule, Routes} from "@angular/router";
+
+
+const routes: Routes = [
+  {path : 'users', component: TableComponent}
+  ];
 
 @NgModule({
   declarations: [
@@ -19,9 +25,13 @@ import { UsersService } from './service.service';
     FooterComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     FontAwesomeModule,
     NgbModule
+  ],
+  exports:[
+    RouterModule
   ],
   providers: [UsersService],//servizio
   bootstrap: [AppComponent]

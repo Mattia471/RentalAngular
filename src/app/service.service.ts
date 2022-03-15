@@ -11,6 +11,8 @@ export class UsersService {
 
   @Input () tableConfig !: MyTableConfig ;
 
+
+  //Observable ->
   getUsers(): Observable<MyArray[]>{
     return of(Array);
   }
