@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th *ngFor="let label of tableConfig.headers">
+      {{label.id}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr >
+    <td *ngFor="let user of users ">
+      <span class="text-black">{{user.name}}</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
