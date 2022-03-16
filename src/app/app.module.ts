@@ -13,7 +13,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
-import {SortDirective} from "./sort.directive";
+import {SearchPipe} from "./pipe/search.pipe";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {SortDirective} from "./sort.directive";
     TableComponent,
     HeaderComponent,
     FooterComponent,
-    SortDirective,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import {SortDirective} from "./sort.directive";
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
     ),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [UsersService],//servizio
   bootstrap: [AppComponent]

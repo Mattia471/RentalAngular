@@ -1,18 +1,19 @@
-
+<label for="searchInput">Cerca Cognome:</label>
+<input class="form-control me-2" [(ngModel)]="searchInput" type="search" name="searchInput" placeholder="Inserisci nominativo" aria-label="Search">
 <table class="table">
   <thead>
   <tr>
-    <th scope="col" [appSort]="users" data-order="desc" data-name="id">Id</th>
-    <th scope="col" [appSort]="users" data-order="desc" data-name="name">Nome</th>
-    <th scope="col" [appSort]="users" data-order="desc" data-name="surname">Cognome</th>
-    <th scope="col" [appSort]="users" data-order="desc" data-name="email">Email</th>
-    <th scope="col" [appSort]="users" data-order="desc" data-name="birthdate">Data di Nascita</th>
+    <th scope="col" data-order="desc" data-name="id" (click)="sortDate()">Id</th>
+    <th scope="col" data-order="desc" data-name="name" (click)="sortDate()">Nome</th>
+    <th scope="col" data-order="desc" data-name="surname" (click)="sortDate()">Cognome</th>
+    <th scope="col" data-order="desc" data-name="email" (click)="sortDate()">Email</th>
+    <th scope="col" data-order="desc" data-name="birthdate" (click)="sortDate()">Data di Nascita</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of users ">
+  <tr *ngFor="let user of users |search:searchInput">
     <td>
-      <span class="text-black">#{{user.id}}</span>
+      <span class="text-black" style="font-weight: bold">#{{user.id}}</span>
     </td>
     <td>
       <span class="text-black">{{user.name}}</span>

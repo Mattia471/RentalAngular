@@ -11,5 +11,4 @@ export class AppComponent {
 
   FinalTable = FinalTable; //tabella istanziata
   SuccessBtn = SuccessBtn; //pulsante instanziato
-  title = 'ButtonCustom';
 }

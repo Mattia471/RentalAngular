@@ -12,6 +12,7 @@ export class TableComponent implements OnInit {
 
   //creazione oggetto servizio
   users: MyArray[] = [];
+  public searchInput!: string;
 
   @Input() tableConfig !: MyTableConfig;
   @Input() appSort!: Array<any>;
@@ -36,11 +37,13 @@ export class TableComponent implements OnInit {
     this.getUsers();
   }
 
+
+  //CAPIRE PERCHE' NON VISUALIZZA L'ORDINE CAMBIATO
   //ordinamento al click
-  @HostListener("click")
   sortDate() {
     //creazione oggetto della classe Sort
-    const sort = new Sort();
+    const sort = new Sort(); //singleton pattern
+
     const elem = this.targetElem.nativeElement;
 
     const order = elem.getAttribute("data-order");
@@ -54,5 +57,9 @@ export class TableComponent implements OnInit {
       elem.setAttribute("data-order","desc") //setta metadato cella in decrescente
     }
   }
+
+
+  //INSERIRE FUNZIONE RICERCA PER STRINGA QUI
+
 
 }
