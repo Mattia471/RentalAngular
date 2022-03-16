@@ -1,11 +1,12 @@
+
 <table class="table">
   <thead>
   <tr>
-    <th>Id</th>
-    <th>Nome</th>
-    <th>Cognome</th>
-    <th>Email</th>
-    <th>Data di Nascita</th>
+    <th scope="col" [appSort]="users" data-order="desc" data-name="id">Id</th>
+    <th scope="col" [appSort]="users" data-order="desc" data-name="name">Nome</th>
+    <th scope="col" [appSort]="users" data-order="desc" data-name="surname">Cognome</th>
+    <th scope="col" [appSort]="users" data-order="desc" data-name="email">Email</th>
+    <th scope="col" [appSort]="users" data-order="desc" data-name="birthdate">Data di Nascita</th>
   </tr>
   </thead>
   <tbody>
