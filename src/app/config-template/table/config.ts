@@ -11,7 +11,7 @@ export class MyArray {
   name!: string;
   surname!: string;
   email!: string;
-  birthdate!: string;
+  birthdate!: Date;
 }
 
 //ordinamento colonne

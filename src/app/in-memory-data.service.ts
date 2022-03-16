@@ -8,9 +8,9 @@ import {MyArray} from "./config-template/table/config";
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = [
-      {id: 1, name: 'Mattia', surname: 'Cucuzza',email: 'cucuzzamattia47@gmail.com', birthdate: '04-07-1767'},
-      {id: 2, name: 'Francesco', surname: 'Barone',email: 'cucuzzamattia23@gmail.com', birthdate: '04-07-2001'},
-      {id: 3, name: 'Giulia', surname: 'Molfetta',email: 'cucuzzgftia12@gmail.com', birthdate: '04-05-2001'},
+      {id: 1, name: 'Mattia', surname: 'Cucuzza',email: 'cucuzzamattia47@gmail.com', birthdate: new Date("2021/06/23")},
+      {id: 2, name: 'Francesco', surname: 'Barone',email: 'cucuzzamattia23@gmail.com', birthdate:  new Date("2021/05/23")},
+      {id: 3, name: 'Giulia', surname: 'Molfetta',email: 'cucuzzgftia12@gmail.com', birthdate:  new Date("2021/04/23")},
     ];
     return {users};
   }

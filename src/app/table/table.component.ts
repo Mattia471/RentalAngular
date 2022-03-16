@@ -36,6 +36,7 @@ export class TableComponent implements OnInit {
     this.getUsers();
   }
 
+  //ordinamento al click
   @HostListener("click")
   sortDate() {
     //creazione oggetto della classe Sort

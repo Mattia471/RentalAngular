@@ -2,7 +2,7 @@ import {MyArray, MyOrder, MyPagination, MySearch, MyTableConfig} from './config'
 
 //array dati
 export const Array: MyArray[] = [
-  {id: 1, name: 'Mattia', surname: 'Cucuzza',email: 'cucuzzamattia47@gmail.com', birthdate: '04-07-2001'},
+  {id: 0, name: '', surname: '',email: '', birthdate: new Date()},
 ];
 
 const Order: MyOrder=

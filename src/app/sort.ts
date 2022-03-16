@@ -1,6 +1,7 @@
 export class Sort {
 
   private sortOrder = 1;
+  public icon ="";
   private collator = new Intl.Collator(undefined, {
     numeric: true,
     sensitivity: "base",
