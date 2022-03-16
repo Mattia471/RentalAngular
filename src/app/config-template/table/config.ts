@@ -1,5 +1,4 @@
 export class MyTableConfig {
-  headers!: MyHeaders [];
   order!: MyOrder;
   search!: MySearch;
   pagination!: MyPagination;
@@ -13,13 +12,6 @@ export class MyArray {
   surname!: string;
   email!: string;
   birthdate!: string;
-}
-
-
-//contenuto header colonne
-export class MyHeaders {
-  id!: string;
-  name!: string;
 }
 
 //ordinamento colonne

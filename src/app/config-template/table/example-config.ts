@@ -1,11 +1,4 @@
-import {MyArray, MyHeaders, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
-
- const Headers: MyHeaders[] = [
-  {id: 'name', name: 'Nome', },
-  {id: 'surname', name: 'Cognome', },
-  {id: 'email', name: 'Email', },
-  {id: 'birthdate', name: 'Data Di Nascita', },
-];
+import {MyArray, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
 
 //array dati
 export const Array: MyArray[] = [
@@ -30,7 +23,6 @@ const Pagination: MyPagination=
   };
 
 export const FinalTable: MyTableConfig = {
-  headers: Headers,
   order: Order,
   search:Search,
   pagination:Pagination,

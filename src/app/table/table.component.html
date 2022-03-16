@@ -1,27 +1,28 @@
-
 <table class="table">
   <thead>
   <tr>
-    <!--<th *ngFor="let head of users">
-        {{head.name}}
-    </th>-->
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Email</th>
+    <th>Data di Nascita</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let user of users ">
-    <td >
+    <td>
       <span class="text-black">#{{user.id}}</span>
     </td>
-    <td >
+    <td>
       <span class="text-black">{{user.name}}</span>
     </td>
-    <td >
+    <td>
       <span class="text-black">{{user.surname}}</span>
     </td>
-    <td >
+    <td>
       <span class="text-black">{{user.email}}</span>
     </td>
-    <td >
+    <td>
       <span class="text-black">{{user.birthdate}}</span>
     </td>
   </tr>

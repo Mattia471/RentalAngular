@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MyArray, MyHeaders, MyTableConfig} from "../config-template/table/config";
+import {MyArray,MyTableConfig} from "../config-template/table/config";
 import {UsersService} from "../service.service";
 
 @Component({
