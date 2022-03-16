@@ -18,7 +18,10 @@ export class TableComponent implements OnInit {
 
   //recuper gli utenti dal servizio
   getUsers(): void{
-    this.service.getUsers().subscribe(next => this.users=next);
+    this.service.getUsers().subscribe(users => {
+      this.users = users
+      console.log(this.users)
+    });
   }
 
   ngOnInit(): void {

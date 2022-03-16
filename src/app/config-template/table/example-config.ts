@@ -9,10 +9,7 @@ import {MyArray, MyHeaders, MyOrder, MyPagination, MySearch, MyTableConfig} from
 
 //array dati
 export const Array: MyArray[] = [
-  {id: 1, key:'name', name: 'Mattia', },
-  {id: 2, key:'surname', name: 'Cucuzza', },
-  {id: 3, key:'email', name: 'cucuzzamattia47@gmail.com', },
-  {id: 4, key:'birthdate', name: '04-07-2001', },
+  {id: 1, name: 'Mattia', surname: 'Cucuzza',email: 'cucuzzamattia47@gmail.com', birthdate: '04-07-2001'},
 ];
 
 const Order: MyOrder=

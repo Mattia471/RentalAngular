@@ -9,8 +9,10 @@ export class MyTableConfig {
 //array dati
 export class MyArray {
   id!: number;
-  key!: string;
   name!: string;
+  surname!: string;
+  email!: string;
+  birthdate!: string;
 }
 
 
