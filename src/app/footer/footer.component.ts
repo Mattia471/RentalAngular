@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from "../config-template/table/config";
+import {FinalTable} from "../config-template/table/example-config";
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +9,12 @@ import {MyTableConfig} from "../config-template/table/config";
 })
 export class FooterComponent implements OnInit {
 
-  @Input () tableConfig !: MyTableConfig ;
+  numberForPage!:any[];
+  tableConfig !: MyTableConfig;
 
-  constructor() { }
+  constructor() {
+    this.numberForPage=FinalTable.pagination.itemForPageOptions;
+  }
 
   ngOnInit(): void {
   }

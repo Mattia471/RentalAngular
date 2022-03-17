@@ -1,17 +1,26 @@
-<label for="searchInput">Cerca Cognome:</label>
-<input class="form-control me-2" [(ngModel)]="searchInput" type="search" name="searchInput" placeholder="Inserisci nominativo" aria-label="Search">
+<div class="row">
+  <div class="col">
+    <label for="search">Cerca Cognome:</label>
+    <input class="form-control me-2" type="search" name="searchInput" id="search" 
+           placeholder="Inserisci nominativo" aria-label="Search">
+  </div>
+  <div class="col">
+    <label for="column">Filtra per colonna:</label>
+    <select class="form-control" id="column" >
+      <option *ngFor="let select of header"
+              value="{{select.key}}">{{select.key}}</option>
+    </select>
+  </div>
+</div>
+
 <table class="table">
   <thead>
   <tr>
-    <th scope="col" data-order="desc" data-name="id" (click)="sortDate()">Id</th>
-    <th scope="col" data-order="desc" data-name="name" (click)="sortDate()">Nome</th>
-    <th scope="col" data-order="desc" data-name="surname" (click)="sortDate()">Cognome</th>
-    <th scope="col" data-order="desc" data-name="email" (click)="sortDate()">Email</th>
-    <th scope="col" data-order="desc" data-name="birthdate" (click)="sortDate()">Data di Nascita</th>
+    <th *ngFor="let head of header" (click)="sortBy(head.key)">{{head.key}}</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of users |search:searchInput">
+  <tr *ngFor="let user of users ">
     <td>
       <span class="text-black" style="font-weight: bold">#{{user.id}}</span>
     </td>

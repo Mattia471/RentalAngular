@@ -1,14 +1,24 @@
-import {MyArray, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+import {MyArray, MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+
 
 //array dati
 export const Array: MyArray[] = [
   {id: 0, name: '', surname: '',email: '', birthdate: new Date()},
 ];
 
+//array heder
+const Header: MyHeader[] = [
+  {key: 'id'},
+  {key: 'name'},
+  {key: 'surname'},
+  {key: 'email'},
+  {key: 'birthdate'},
+];
+
 const Order: MyOrder=
 {
   orderType : 'ascending',
-  defaultColumn : 'surname'
+  defaultColumn : 'name'
 };
 
 const Search: MySearch=
@@ -24,6 +34,7 @@ const Pagination: MyPagination=
 
 export const FinalTable: MyTableConfig = {
   order: Order,
+  header: Header,
   search:Search,
   pagination:Pagination,
   array:Array
