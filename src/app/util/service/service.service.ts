@@ -1,6 +1,6 @@
 import {Injectable, Input} from '@angular/core';
 import {MyArray, MyTableConfig} from "../configCustom/table/config";
-import {Array} from "../configCustom/table/example-config";
+import {Array} from "../configCustom/table/usersConfig";
 import {catchError, Observable, of, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 

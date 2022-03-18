@@ -32,7 +32,7 @@ const Pagination: MyPagination =
     itemForPageOptions: [4, 8, 12, 16]
   };
 
-export const FinalTable: MyTableConfig = {
+export const UsersConfig: MyTableConfig = {
   order: Order,
   header: Header,
   search: Search,

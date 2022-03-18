@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FinalTable} from "./util/configCustom/table/example-config";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,5 @@ import { FinalTable} from "./util/configCustom/table/example-config";
 })
 export class AppComponent {
 
-  FinalTable = FinalTable; //tabella istanziata
+
 }

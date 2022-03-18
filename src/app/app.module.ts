@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ButtonCustomComponent } from './component/buttonCustom/button-custom.component';
+import { ButtonCustomComponent } from './component/buttonCustom/config/button-custom.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TableComponent } from './component/table/table.component';
+import { TableComponent } from './component/table/config/table.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { UsersService } from './util/service/service.service';

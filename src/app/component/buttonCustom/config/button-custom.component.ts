@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MyButtonConfig} from "../../util/configCustom/button/config";
-import {searchButton} from "../../util/configCustom/button/searchButton";
+import {MyButtonConfig} from "../../../util/configCustom/button/config";
+import {searchButton} from "../../../util/configCustom/button/searchButton";
 @Component({
   selector: 'app-button-search',
   templateUrl: './button-custom.component.html',

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <label class="">Colonna</label>
+      <select [(ngModel)]="columnInput" class="form-control">
+        <option *ngFor="let select of config.header"
+                value="{{select.key}}">{{select.key}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label class="">Testo da cercare</label>
+      <input [(ngModel)]="searchInput" (input)="searchBy()" class="form-control me-2" aria-label="Search">
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let head of config.header " (click)="sortBy(head.key)">{{head.key}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of dataDisplay ">
+      <td *ngFor="let head of config.header">
+        <span class="text-black">{{user[head.key]}}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TableComponent} from "./component/table/table.component";
 import {RouterModule, Routes} from "@angular/router";
-import {FinalTable} from "./util/configCustom/table/example-config";
+import {UserPageComponent} from "./page/user-page/user-page.component";
 
 
 const routes: Routes = [
   {
     path : 'users',
-    component: TableComponent
+    component: UserPageComponent
   }
 ];
 
