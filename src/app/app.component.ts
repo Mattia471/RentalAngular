@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { SuccessBtn } from './config-template/button/example-config';
-import { FinalTable} from "./config-template/table/example-config";
+import { FinalTable} from "./util/configCustom/table/example-config";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,4 @@ import { FinalTable} from "./config-template/table/example-config";
 export class AppComponent {
 
   FinalTable = FinalTable; //tabella istanziata
-  SuccessBtn = SuccessBtn; //pulsante instanziato
 }

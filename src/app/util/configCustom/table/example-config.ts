@@ -3,7 +3,7 @@ import {MyArray, MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from 
 
 //array dati
 export const Array: MyArray[] = [
-  {id: 0, name: '', surname: '',email: '', birthdate: new Date()},
+  {id: 0, name: '', surname: '', email: '', birthdate: new Date()},
 ];
 
 //array heder
@@ -15,27 +15,27 @@ const Header: MyHeader[] = [
   {key: 'birthdate'},
 ];
 
-const Order: MyOrder=
-{
-  orderType : 'ascending',
-  defaultColumn : 'name'
-};
-
-const Search: MySearch=
+const Order: MyOrder =
   {
-    columns: ['name','surname','email','birthdate']
+    orderType: 'ascending',
+    defaultColumn: 'name'
   };
 
-const Pagination: MyPagination=
+const Search: MySearch =
   {
-    itemForPage:4,
-    itemForPageOptions: [4,8,12,16]
+    columns: ['name', 'surname', 'email', 'birthdate']
+  };
+
+const Pagination: MyPagination =
+  {
+    itemForPage: 4,
+    itemForPageOptions: [4, 8, 12, 16]
   };
 
 export const FinalTable: MyTableConfig = {
   order: Order,
   header: Header,
-  search:Search,
-  pagination:Pagination,
-  array:Array
+  search: Search,
+  pagination: Pagination,
+  array: Array
 };

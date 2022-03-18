@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TableComponent} from "./table/table.component";
+import {TableComponent} from "./component/table/table.component";
 import {RouterModule, Routes} from "@angular/router";
-import {FinalTable} from "./config-template/table/example-config";
+import {FinalTable} from "./util/configCustom/table/example-config";
 
 
 const routes: Routes = [

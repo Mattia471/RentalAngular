@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MyTableConfig} from "../config-template/table/config";
-import {FinalTable} from "../config-template/table/example-config";
+import {MyTableConfig} from "../../util/configCustom/table/config";
+import {FinalTable} from "../../util/configCustom/table/example-config";
 
 @Component({
   selector: 'app-footer',

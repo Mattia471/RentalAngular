@@ -1,22 +1,24 @@
 <div class="row">
-  <div class="col">
-    <label for="search">Cerca Cognome:</label>
-    <input class="form-control me-2" type="search" name="searchInput" id="search" 
-           placeholder="Inserisci nominativo" aria-label="Search">
-  </div>
-  <div class="col">
-    <label for="column">Filtra per colonna:</label>
-    <select class="form-control" id="column" >
+  <div class="col-5">
+    <label class="" >Colonna</label>
+    <select #inputColumn class="form-control" id="columnInput" >
       <option *ngFor="let select of header"
               value="{{select.key}}">{{select.key}}</option>
     </select>
   </div>
+  <div class="col-5">
+    <label class="" >Testo da cercare</label>
+    <input #inputText (input)="searchBy(inputColumn.value,inputText.value)"  class="form-control me-2" type="search" id="searchInput" placeholder="nominativo" aria-label="Search">
+  </div>
+  <div class="col">
+    <label class="text-white" >*</label><br>
+    <app-button-search></app-button-search>
+  </div>
 </div>
-
 <table class="table">
   <thead>
   <tr>
-    <th *ngFor="let head of header" (click)="sortBy(head.key)">{{head.key}}</th>
+    <th *ngFor="let head of header " (click)="sortBy(head.key)">{{head.key}}</th>
   </tr>
   </thead>
   <tbody>
