@@ -12,6 +12,9 @@ export class UserPageComponent implements OnInit {
   users!: MyArray[];
   usersTable = UsersConfig;
 
+
+
+
   constructor(private service: UsersService) { }
 
   ngOnInit(): void {
@@ -24,4 +27,6 @@ export class UserPageComponent implements OnInit {
       this.users = users
     });
   }
+
+
 }

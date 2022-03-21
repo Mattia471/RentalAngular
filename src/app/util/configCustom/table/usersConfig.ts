@@ -28,7 +28,7 @@ const Search: MySearch =
 
 const Pagination: MyPagination =
   {
-    itemForPage: 4,
+    itemForPage: 10,
     itemForPageOptions: [4, 8, 12, 16]
   };
 

@@ -1,6 +1,7 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from "../../../util/configCustom/table/config";
-
+import {end, start} from "@popperjs/core";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-table',
@@ -22,18 +23,32 @@ export class TableComponent implements OnInit {
   searchInput!: string;
   columnInput!: string;
 
+  startPage!: number;
+  endPage!: number;
+  currentPage: number = 0;
+  totalPages!: number;
+  itemForPage!: number;
+
   constructor() {
 
   }
 
+
+  //dopo che vengono inizializzati tutte le proprietà associate a dati di una direttiva
   ngOnInit(): void {
-    this.columnInput=this.config.search.columns[0];
-    this.dataDisplay = this.data;
+    this.getNumberOfPages()
+  }
 
-    this.lastC = this.config.order.defaultColumn;
-    this.orderType = this.getTypeOrder(this.config.order.orderType);
-    this.sortBy(this.lastC);
+  //quando viene modificato un valore tramite direttiva si innesca questo metodo
+  ngOnChanges(): void {
+    if (this.data != undefined) { //esegue solo se i dati sono presenti
+      this.columnInput = this.config.search.columns[0];
+      this.dataDisplay = this.data;
 
+      this.lastC = this.config.order.defaultColumn;
+      this.orderType = this.getTypeOrder(this.config.order.orderType);
+      this.sortBy(this.lastC);
+    }
   }
 
 
@@ -77,6 +92,7 @@ export class TableComponent implements OnInit {
         return 0;
       });
     }
+    this.setCurrentPage(0)
   }
 
 
@@ -93,8 +109,26 @@ export class TableComponent implements OnInit {
     } else {
       this.dataDisplay = this.data;
     }
+  }
 
-    //console.log(this.columnInput, this.searchInput)
+
+  setItemForPage(newItemForPage: number): void {
+    this.itemForPage = newItemForPage;
+    this.getNumberOfPages()
+    //console.log("numero elementi: " + this.itemForPage)
+  }
+
+  getNumberOfPages(): void {
+    if (this.itemForPage === undefined) {
+      this.itemForPage = this.config.pagination.itemForPage;
+    }
+    this.totalPages = _.ceil(this.data.length / this.itemForPage);
+    //console.log("numero pagine: " + this.totalPages)
+  }
+
+
+  setCurrentPage(numberPage: number): void {
+    this.currentPage = numberPage;
   }
 
 

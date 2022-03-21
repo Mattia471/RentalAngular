@@ -15,7 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import { UserPageComponent } from './page/user-page/user-page.component';
-
+import { SlicePipe } from './util/pipes/pagination/slice.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { UserPageComponent } from './page/user-page/user-page.component';
     HeaderComponent,
     FooterComponent,
     UserPageComponent,
+    SlicePipe,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { UserPageComponent } from './page/user-page/user-page.component';
       InMemoryDataService, {dataEncapsulation: false}
     ),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [UsersService],//servizio
   bootstrap: [AppComponent]
