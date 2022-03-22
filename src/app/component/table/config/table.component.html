@@ -1,57 +1,60 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <label class="">Colonna</label>
+      <label class="text-black">Colonna</label>
       <select [(ngModel)]="columnInput" class="form-control">
         <option *ngFor="let select of config.header"
                 value="{{select.key}}">{{select.key}}</option>
       </select>
     </div>
     <div class="col">
-      <label class="">Testo da cercare</label>
+      <label class="text-black">Testo da cercare</label>
       <input [(ngModel)]="searchInput" (input)="searchBy()" class="form-control me-2" aria-label="Search">
     </div>
   </div>
+  <hr>
   <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let head of config.header " (click)="sortBy(head.key)">{{head.key}}</th>
+      <th class="text-white font-weight-bold text-uppercase bg-success" *ngFor="let head of config.header "
+          (click)="sortBy(head.key)">{{head.key}}</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of dataDisplay | slice : currentPage: itemForPage ">
+    <tr class="" *ngFor="let user of dataDisplay | slice : currentPage: itemForPage ">
       <td *ngFor="let head of config.header">
         <span class="text-black">{{user[head.key]}}</span>
       </td>
     </tr>
     </tbody>
   </table>
-</div>
-<div class="row">
-  <div class="d-flex justify-content-center">
-    Pagina: {{currentPage + 1}} | Elementi: {{itemForPage}}
-  </div>
-  <div class="d-flex justify-content-center">
-    <div class="mr-2">
-      <button type="button" class="btn btn-dark" (click)="setCurrentPage(currentPage - 1)"
-              [disabled]="!(currentPage > 0)">
+
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      Pagina: {{currentPage + 1}} | Elementi: {{itemForPage}} || tramite la select puoi scegliere tu quanti elementi mostrare
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="mr-2">
+        <button type="button" class="btn btn-dark" (click)="setCurrentPage(currentPage - 1)"
+                [disabled]="!(currentPage > 0)">
         <span class="material-icons">
           navigate_before
         </span>
-      </button>
-    </div>
-    <div class="d-inline-flex vertical-align col-1">
-      <select class="form-control" [(ngModel)]="itemForPage" (ngModelChange)="setItemForPage(itemForPage)" >
-        <option *ngFor="let item of config.pagination.itemForPageOptions" value="{{item}}"  >{{item}}</option>
-      </select>
-    </div>
-    <div class="ml-2">
-      <button type="button" class="btn btn-dark" (click)="setCurrentPage(currentPage + 1)"
-              [disabled]="!(currentPage < totalPages -1 )">
+        </button>
+      </div>
+      <div class="d-inline-flex vertical-align col-1">
+        <select class="form-control" [(ngModel)]="itemForPage" (ngModelChange)="setItemForPage(itemForPage)">
+          <option *ngFor="let item of config.pagination.itemForPageOptions" value="{{item}}">{{item}}</option>
+        </select>
+      </div>
+      <div class="ml-2">
+        <button type="button" class="btn btn-dark" (click)="setCurrentPage(currentPage + 1)"
+                [disabled]="!(currentPage < totalPages -1 )">
         <span class="material-icons">
           navigate_next
         </span>
-      </button>
+        </button>
+      </div>
     </div>
   </div>
 </div>
