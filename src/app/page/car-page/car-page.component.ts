@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { MyTableConfig} from "../../util/configCustom/table/config";
 import {CarsService} from "../../util/service/cars/cars.service";
 import {CarsConfig} from "../../util/configCustom/table/carsConfig";
 import {CarsModel} from "../../util/model/cars";
@@ -12,7 +11,6 @@ export class CarPageComponent implements OnInit {
 
   cars!: CarsModel[];
   carsTable = CarsConfig;
-
 
 
 

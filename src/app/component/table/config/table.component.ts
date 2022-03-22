@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {MyTableConfig} from "../../../util/configCustom/table/config";
 import {end, start} from "@popperjs/core";
 import * as _ from 'lodash';
@@ -12,6 +12,8 @@ export class TableComponent implements OnInit {
 
   @Input() config!: MyTableConfig; //table generico configurazione
   @Input() data!: any[]; //dati che arrivano su cui lavorare
+
+  @Output() emitter = new EventEmitter<any>();
 
   dataDisplay!: any[];
 
@@ -28,6 +30,7 @@ export class TableComponent implements OnInit {
   currentPage: number = 0;
   totalPages!: number;
   itemForPage!: number;
+
 
   constructor() {
 
@@ -48,6 +51,7 @@ export class TableComponent implements OnInit {
       this.lastC = this.config.order.defaultColumn;
       this.orderType = this.getTypeOrder(this.config.order.orderType);
       this.sortBy(this.lastC);
+      console.log(this.config.actions)
     }
   }
 
@@ -105,7 +109,7 @@ export class TableComponent implements OnInit {
             [this.columnInput] //rendere dinamico il campo
             .toLocaleLowerCase()
             .match
-            (this.searchInput.toLocaleLowerCase().toString());
+            (this.searchInput.toLocaleLowerCase());
         })
     } else {
       this.dataDisplay = this.data;
@@ -133,5 +137,10 @@ export class TableComponent implements OnInit {
     this.currentPage = numberPage;
   }
 
+  btnEvent(event:string,data:any[]):void{
+    const obj = {obj: data, action: event};
+    console.log(obj)
+    this.emitter.emit(obj);
+  }
 
 }

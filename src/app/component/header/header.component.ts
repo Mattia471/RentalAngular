@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from "../../util/configCustom/table/config";
+import {MyButtonConfig} from "../../util/configCustom/button/config";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {MyTableConfig} from "../../util/configCustom/table/config";
 })
 export class HeaderComponent implements OnInit {
 
-  //tableConfig !: MyTableConfig;
+  
 
   constructor() { }
 

@@ -1,10 +1,8 @@
-import {/*MyArray,*/ MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+import {/*MyArray,*/ MyHeader, MyOrder, MyPagination, MySearch, MyTableActionEnum, MyTableConfig} from './config';
+import {AddButton} from "../button/addButton";
+import {EditButton} from "../button/editButton";
+import {DeleteButton} from "../button/deleteButton";
 
-
-/*array dati
-export const Array: MyArray[] = [
-  {id: 0, name: '', surname: '', email: '', birthdate: new Date()},
-];*/
 
 //array heder
 const Header: MyHeader[] = [
@@ -26,6 +24,7 @@ const Search: MySearch =
     columns: ['name', 'surname', 'email', 'birthdate']
   };
 
+
 const Pagination: MyPagination =
   {
     itemForPage: 5,
@@ -37,5 +36,5 @@ export const UsersConfig: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
-  //array: Array
+  actions: [AddButton,EditButton,DeleteButton]
 };

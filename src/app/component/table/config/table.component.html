@@ -17,13 +17,19 @@
     <thead>
     <tr>
       <th class="text-white font-weight-bold text-uppercase bg-success" *ngFor="let head of config.header "
-          (click)="sortBy(head.key)">{{head.label}}</th>
+          (click)="sortBy(head.key)">{{head.label}}
+      </th>
     </tr>
     </thead>
     <tbody>
     <tr class="" *ngFor="let user of dataDisplay | slice : currentPage: itemForPage ">
       <td *ngFor="let head of config.header">
         <span class="text-black">{{user[head.key]}}</span>
+      </td>
+      <td style="" *ngFor="let button of config.actions">
+        <ng-container *ngIf="button.action != 'add'"> <!--MOSTRA SOLO I TASTI MODIFICA E CANCELLA-->
+            <app-button-custom [btn]="button" (emitter)="btnEvent(button.action,user)"></app-button-custom>
+        </ng-container>
       </td>
     </tr>
     </tbody>

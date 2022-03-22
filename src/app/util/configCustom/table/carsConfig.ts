@@ -1,4 +1,7 @@
 import {MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+import {AddButton} from "../button/addButton";
+import {EditButton} from "../button/editButton";
+import {DeleteButton} from "../button/deleteButton";
 
 
 
@@ -33,4 +36,5 @@ export const CarsConfig: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
+  actions: [AddButton, EditButton,DeleteButton]
 };

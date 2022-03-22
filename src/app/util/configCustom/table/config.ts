@@ -1,19 +1,16 @@
+import {MyButtonConfig} from "../button/config";
+
 export class MyTableConfig {
   order!: MyOrder;
   header!: MyHeader[];
   search!: MySearch;
   pagination!: MyPagination;
-  //array!: MyArray [];
+  actions !: MyButtonConfig [];
 }
 
-/*array dati
-export class MyArray {
-  id!: number;
-  name!: string;
-  surname!: string;
-  email!: string;
-  birthdate!: Date;
-}*/
+export enum MyTableActionEnum {
+  ADD , EDIT , DELETE
+}
 
 //array dati
 export class MyHeader {

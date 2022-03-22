@@ -1,27 +1,25 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MyButtonConfig} from "../../../util/configCustom/button/config";
-import {searchButton} from "../../../util/configCustom/button/searchButton";
+
+
 @Component({
-  selector: 'app-button-search',
+  selector: 'app-button-custom',
   templateUrl: './button-custom.component.html',
   styleUrls: ['./button-custom.component.css']
 })
 
 export class ButtonCustomComponent implements OnInit {
 
-
-  searchButton = searchButton;
+  @Input() btn!: MyButtonConfig;
 
   @Output() emitter = new EventEmitter<any>();
 
   constructor() { }
 
-  ngOnInit(): void {
-
-  }
-
-  btnAction(action: string): void {
+  btnClicked(action: string): void {
     this.emitter.emit(action);
   }
+
+  ngOnInit(): void { }
 
 }
