@@ -1,18 +1,18 @@
-import {MyArray, MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+import {/*MyArray,*/ MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
 
 
-//array dati
+/*array dati
 export const Array: MyArray[] = [
   {id: 0, name: '', surname: '', email: '', birthdate: new Date()},
-];
+];*/
 
 //array heder
 const Header: MyHeader[] = [
-  {key: 'id'},
-  {key: 'name'},
-  {key: 'surname'},
-  {key: 'email'},
-  {key: 'birthdate'},
+  {key: 'id',label:'id'},
+  {key: 'name' ,label:'nome'},
+  {key: 'surname' ,label:'cognome'},
+  {key: 'email' ,label:'email'},
+  {key: 'birthdate' ,label:'data di nascita'},
 ];
 
 const Order: MyOrder =
@@ -37,5 +37,5 @@ export const UsersConfig: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
-  array: Array
+  //array: Array
 };

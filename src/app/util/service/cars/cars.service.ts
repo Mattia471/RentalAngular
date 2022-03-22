@@ -1,28 +1,30 @@
 import {Injectable, Input} from '@angular/core';
-import {MyArray, MyTableConfig} from "../configCustom/table/config";
-import {Array} from "../configCustom/table/usersConfig";
+import { MyTableConfig} from "../../configCustom/table/config";
 import {catchError, Observable, of, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {CarsModel} from "../../model/cars";
+
 
 
 // permette di rendere il servizio visibile ai componenti per l'utilizzo
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class CarsService {
 
-  private userUrl = 'api/users/';
+  private carUrl = 'api/cars/';
   tableConfig !: MyTableConfig;
 
   constructor(private http: HttpClient)
   {
   }
 
+
   //recupera lista intera
-  getUsers(): Observable<MyArray[]> {
-    return this.http.get<MyArray[]>(this.userUrl).pipe(
-      tap(_ => this.log('UTENTI GENERATI')),
-      catchError(this.handleError<MyArray[]>('getUsers', []))
+  getCars(): Observable<CarsModel[]> {
+    return this.http.get<CarsModel[]>(this.carUrl).pipe(
+      tap(_ => this.log('AUTO GENERATE')),
+      catchError(this.handleError<CarsModel[]>('getCars', []))
     );
   }
 
@@ -49,7 +51,7 @@ export class UsersService {
     };
   }
 
-  private log(fetchedUsers: string) {
-    console.log(fetchedUsers)
+  private log(methodLog: string) {
+    console.log(methodLog)
   }
 }

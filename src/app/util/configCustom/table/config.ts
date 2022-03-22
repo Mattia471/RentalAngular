@@ -3,21 +3,22 @@ export class MyTableConfig {
   header!: MyHeader[];
   search!: MySearch;
   pagination!: MyPagination;
-  array!: MyArray [];
+  //array!: MyArray [];
 }
 
-//array dati
+/*array dati
 export class MyArray {
   id!: number;
   name!: string;
   surname!: string;
   email!: string;
   birthdate!: Date;
-}
+}*/
 
 //array dati
 export class MyHeader {
   key!: string;
+  label!: string;
 }
 
 //ordinamento colonne

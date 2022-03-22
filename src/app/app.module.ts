@@ -8,13 +8,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableComponent } from './component/table/config/table.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { UsersService } from './util/service/service.service';
+import { UsersService } from './util/service/users/users.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './util/service/in-memory-data.service';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import { UserPageComponent } from './page/user-page/user-page.component';
+import { CarPageComponent } from './page/car-page/car-page.component';
 import { SlicePipe } from './util/pipes/pagination/slice.pipe';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SlicePipe } from './util/pipes/pagination/slice.pipe';
     FooterComponent,
     UserPageComponent,
     SlicePipe,
+    CarPageComponent,
   ],
   imports: [
     BrowserModule,

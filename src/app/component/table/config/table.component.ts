@@ -98,13 +98,14 @@ export class TableComponent implements OnInit {
 
   searchBy() {
     if (this.searchInput != "") {
+      if(this.searchInput )
       this.dataDisplay =
         this.data.filter(x => {
           return x
             [this.columnInput] //rendere dinamico il campo
             .toLocaleLowerCase()
             .match
-            (this.searchInput.toLocaleLowerCase());
+            (this.searchInput.toLocaleLowerCase().toString());
         })
     } else {
       this.dataDisplay = this.data;

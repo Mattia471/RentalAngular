@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MyArray, MyTableConfig} from "../../util/configCustom/table/config";
+import { MyTableConfig} from "../../util/configCustom/table/config";
 import {UsersConfig} from "../../util/configCustom/table/usersConfig";
-import {UsersService} from "../../util/service/service.service";
+import {UsersService} from "../../util/service/users/users.service";
+import {UsersModel} from "../../util/model/users";
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -9,7 +10,7 @@ import {UsersService} from "../../util/service/service.service";
 })
 export class UserPageComponent implements OnInit {
 
-  users!: MyArray[];
+  users!: UsersModel[];
   usersTable = UsersConfig;
 
 
