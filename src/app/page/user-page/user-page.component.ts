@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {UsersConfig} from "../../util/configCustom/table/usersConfig";
 import {UsersService} from "../../util/service/users/users.service";
 import {UsersModel} from "../../util/model/users";
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -13,14 +14,28 @@ export class UserPageComponent implements OnInit {
   usersTable = UsersConfig;
 
 
-  constructor(private service: UsersService) { }
+  constructor(
+    private service: UsersService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   btnClicked($event:any){
-    console.log($event)
+    switch ($event.action){
+      case 'add':
+        this.router.navigate(['add'], {relativeTo: this.route});
+        break;
+      case 'edit':
+        this.router.navigate(['edit'], {relativeTo: this.route});
+        break;
+      case 'delete':
+        this.router.navigate(['delete'], {relativeTo: this.route});
+        break;
+    }
   }
 
   //recuperp gli utenti dal servizio

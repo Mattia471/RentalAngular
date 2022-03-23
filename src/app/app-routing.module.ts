@@ -11,15 +11,19 @@ const routes: Routes = [
     component: UserPageComponent
   },
   {
+    path : 'users/add',
+    component: UserPageComponent
+  },
+  {
     path : 'users/edit',
     component: UserPageComponent
   },
   {
-    path : 'cars',
-    component: CarPageComponent
+    path : 'users/delete',
+    component: UserPageComponent
   },
   {
-    path : 'cars/edit',
+    path : 'cars',
     component: CarPageComponent
   }
 ];
