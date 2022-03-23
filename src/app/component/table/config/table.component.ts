@@ -1,6 +1,5 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MyTableConfig} from "../../../util/configCustom/table/config";
-import {end, start} from "@popperjs/core";
 import * as _ from 'lodash';
 
 @Component({
@@ -13,7 +12,7 @@ export class TableComponent implements OnInit {
   @Input() config!: MyTableConfig; //table generico configurazione
   @Input() data!: any[]; //dati che arrivano su cui lavorare
 
-  @Output() emitter = new EventEmitter<any>();
+  @Output() btnEventEmit = new EventEmitter<any>();
 
   dataDisplay!: any[];
 
@@ -51,7 +50,6 @@ export class TableComponent implements OnInit {
       this.lastC = this.config.order.defaultColumn;
       this.orderType = this.getTypeOrder(this.config.order.orderType);
       this.sortBy(this.lastC);
-      console.log(this.config.actions)
     }
   }
 
@@ -102,18 +100,19 @@ export class TableComponent implements OnInit {
 
   searchBy() {
     if (this.searchInput != "") {
-      if(this.searchInput )
-      this.dataDisplay =
-        this.data.filter(x => {
-          return x
-            [this.columnInput] //rendere dinamico il campo
-            .toLocaleLowerCase()
-            .match
-            (this.searchInput.toLocaleLowerCase());
-        })
+      if (this.searchInput)
+        this.dataDisplay =
+          this.data.filter(x => {
+            return x
+              [this.columnInput] //rendere dinamico il campo
+              .toLocaleLowerCase()
+              .match
+              (this.searchInput.toLocaleLowerCase());
+          })
     } else {
       this.dataDisplay = this.data;
     }
+
   }
 
 
@@ -137,10 +136,9 @@ export class TableComponent implements OnInit {
     this.currentPage = numberPage;
   }
 
-  btnEvent(event:string,data:any[]):void{
-    const obj = {obj: data, action: event};
-    console.log(obj)
-    this.emitter.emit(obj);
+  btnClicked(event: string, data: any): void {
+    const eventClicked = {item: data, action: event}; //contiene i valori che dovrà utilizzare lo strato di servizio
+    this.btnEventEmit.emit(eventClicked); //oggetto emesso
   }
 
 }

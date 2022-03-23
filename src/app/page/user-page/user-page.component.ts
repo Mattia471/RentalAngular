@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { MyTableConfig} from "../../util/configCustom/table/config";
+import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {UsersConfig} from "../../util/configCustom/table/usersConfig";
 import {UsersService} from "../../util/service/users/users.service";
 import {UsersModel} from "../../util/model/users";
@@ -14,12 +13,14 @@ export class UserPageComponent implements OnInit {
   usersTable = UsersConfig;
 
 
-
-
   constructor(private service: UsersService) { }
 
   ngOnInit(): void {
     this.getUsers();
+  }
+
+  btnClicked($event:any){
+    console.log($event)
   }
 
   //recuperp gli utenti dal servizio
@@ -28,6 +29,8 @@ export class UserPageComponent implements OnInit {
       this.users = users
     });
   }
+
+
 
 
 }

@@ -12,7 +12,10 @@
       <input [(ngModel)]="searchInput" (input)="searchBy()" class="form-control me-2" aria-label="Search">
     </div>
   </div>
+  <app-button-custom [btn]="config.actions[0]" (emitter)="btnClicked($event,'')"></app-button-custom>
+
   <hr>
+
   <table class="table">
     <thead>
     <tr>
@@ -28,7 +31,7 @@
       </td>
       <td style="" *ngFor="let button of config.actions">
         <ng-container *ngIf="button.action != 'add'"> <!--MOSTRA SOLO I TASTI MODIFICA E CANCELLA-->
-            <app-button-custom [btn]="button" (emitter)="btnEvent(button.action,user)"></app-button-custom>
+            <app-button-custom [btn]="button" (emitter)="btnClicked(button.action,user)"></app-button-custom>
         </ng-container>
       </td>
     </tr>

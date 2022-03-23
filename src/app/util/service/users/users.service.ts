@@ -26,16 +26,38 @@ export class UsersService {
     );
   }
 
+  /*recupera utenti da id
+  getUserById(user : UsersModel): Observable<any> {
+    return this.http.get<UsersModel[]>(this.userUrl+user.id)
+      .pipe(
+      tap(_ => this.log('UTENTE VISUALIZZATO')),
+      catchError(this.handleError<UsersModel[]>('getUserById', []))
+    );
+  }
+
+  //edit
+  editUser(user : UsersModel): Observable<any> {
+    return this.http.put<UsersModel[]>(this.userUrl+"/edit",user.id)
+      .pipe(
+      tap(_ => this.log('UTENTE MODIFICATO')),
+      catchError(this.handleError<UsersModel[]>('editUser', []))
+    );
+  }
+
+  //edit
+  deleteUser(user : UsersModel): Observable<any> {
+    return this.http.delete<UsersModel[]>(this.userUrl+"/edit"+user.id)
+      .pipe(
+        tap(_ => this.log('UTENTE ELIMINATO')),
+        catchError(this.handleError<UsersModel[]>('deleteUser', []))
+      );
+  }
+*/
 
 
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+
+//stampa i messaggi di errore in console
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
