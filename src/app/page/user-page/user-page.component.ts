@@ -3,6 +3,7 @@ import {UsersConfig} from "../../util/configCustom/table/usersConfig";
 import {UsersService} from "../../util/service/users/users.service";
 import {UsersModel} from "../../util/model/users";
 import {ActivatedRoute, Router} from "@angular/router";
+
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -18,14 +19,15 @@ export class UserPageComponent implements OnInit {
     private service: UsersService,
     private router: Router,
     private route: ActivatedRoute,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
-  btnClicked($event:any){
-    switch ($event.action){
+  btnClicked($event: any) {
+    switch ($event.action) {
       case 'add':
         this.router.navigate(['add'], {relativeTo: this.route});
         break;
@@ -33,7 +35,7 @@ export class UserPageComponent implements OnInit {
         this.router.navigate(['edit'], {relativeTo: this.route});
         break;
       case 'delete':
-        this.router.navigate(['delete'], {relativeTo: this.route});
+        this.delete($event.item);
         break;
     }
   }
@@ -45,7 +47,12 @@ export class UserPageComponent implements OnInit {
     });
   }
 
-
+  delete(user: UsersModel): void {
+      this.service.deleteUser(user.id)
+        .subscribe(o => {
+          this.getUsers();
+        });
+  }
 
 
 }

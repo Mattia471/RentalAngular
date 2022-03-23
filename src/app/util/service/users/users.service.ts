@@ -26,15 +26,16 @@ export class UsersService {
     );
   }
 
-  /*recupera utenti da id
-  getUserById(user : UsersModel): Observable<any> {
-    return this.http.get<UsersModel[]>(this.userUrl+user.id)
+  //recupera utenti da id
+  getUserById(id:number): Observable<any> {
+    const url = `${this.userUrl}/getById/${id}`;
+    return this.http.get<UsersModel[]>(url)
       .pipe(
-      tap(_ => this.log('UTENTE VISUALIZZATO')),
-      catchError(this.handleError<UsersModel[]>('getUserById', []))
+      tap(_ => this.log('UTENTE Selezionato con id: ' +id)),
+      catchError(this.handleError<UsersModel>('getUserById'))
     );
   }
-
+/*
   //edit
   editUser(user : UsersModel): Observable<any> {
     return this.http.put<UsersModel[]>(this.userUrl+"/edit",user.id)
@@ -43,16 +44,17 @@ export class UsersService {
       catchError(this.handleError<UsersModel[]>('editUser', []))
     );
   }
-
-  //edit
-  deleteUser(user : UsersModel): Observable<any> {
-    return this.http.delete<UsersModel[]>(this.userUrl+"/edit"+user.id)
+*/
+  //delete
+  deleteUser(id:number): Observable<UsersModel> {
+    const url = `${this.userUrl}/delete/`+id;
+    return this.http.delete<UsersModel>(url)
       .pipe(
-        tap(_ => this.log('UTENTE ELIMINATO')),
-        catchError(this.handleError<UsersModel[]>('deleteUser', []))
+        tap(_ => this.log(`UTENTE Eliminato con id: `+ id)),
+        catchError(this.handleError<UsersModel>(`deleteUser`))
       );
   }
-*/
+
 
 
 

@@ -8,19 +8,11 @@ import {CarPageComponent} from "./page/car-page/car-page.component";
 const routes: Routes = [
   {
     path : 'users',
-    component: UserPageComponent
-  },
-  {
-    path : 'users/add',
-    component: UserPageComponent
-  },
-  {
-    path : 'users/edit',
-    component: UserPageComponent
-  },
-  {
-    path : 'users/delete',
-    component: UserPageComponent
+    component: UserPageComponent,
+    children:[
+      {path : 'add', component: UserPageComponent}, //mandare a form
+      {path : 'edit', component: UserPageComponent}, //mandare a form
+    ]
   },
   {
     path : 'cars',
