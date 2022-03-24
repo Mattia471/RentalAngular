@@ -12,7 +12,7 @@ export class CustomFormComponent implements OnInit {
   @Input() item !: any;
 
   @Input() classes: any;
-  @Input() user:any;
+  @Input() obj:any;
   @Input() keys:any;
   @Input() data:any;
   @Input() typeOfData:any;
@@ -25,8 +25,7 @@ export class CustomFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*console.log(this.data)
-    console.log(this.keys)*/
+
   }
 
 }

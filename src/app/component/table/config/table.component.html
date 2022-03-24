@@ -12,9 +12,10 @@
       <input [(ngModel)]="searchInput" (input)="searchBy()" class="form-control me-2" aria-label="Search">
     </div>
   </div>
-  <app-button-custom [btn]="config.actions[0]" (emitter)="btnClicked($event,'')"></app-button-custom>
-
   <hr>
+  <app-button-custom [btn]="config.actions[0]" (emitter)="btnClicked($event,'')"></app-button-custom>
+  <hr>
+
 
   <table class="table">
     <thead>

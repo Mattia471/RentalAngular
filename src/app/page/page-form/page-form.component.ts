@@ -31,9 +31,11 @@ export class PageFormComponent implements OnInit {
   ngOnInit(): void {
     this.getClass()
     this.getItem()
-    this.getObject()
-    /*console.log("Sono la classe : " + this.classItems)
-    console.log("Sono l'id utente: " + this.itemContent)*/
+    if(this.itemContent) {
+      this.getStructureAdd()
+    }else{
+      this.getStructureEdit()
+    }
   }
 
   getClass(): void{
@@ -41,19 +43,20 @@ export class PageFormComponent implements OnInit {
   }
 
   getItem(): void{
-    this.itemContent=this.route.snapshot.paramMap.get('user')
+    this.itemContent=this.route.snapshot.paramMap.get('obj')
   }
 
-  getObject(): void{
+  getStructureAdd(): void{
     switch (this.classItems){
       case 'users':
         this.usersService.getUserById(this.itemContent).subscribe(users => {
           this.data = users
           this.keys = Object.keys(this.data)
-
+          //TODO
+          //CREARE UN METODO
             for (let i = 0; i < this.keys.length; i++) {
               this.typeOfData[i] = typeof this.data[this.keys[i]];
-              if (moment(this.data[this.keys[i]], "DD/MM/YYYY", true).isValid()) {
+              if (moment(this.data[this.keys[i]], "YYYY-MM-DD", true).isValid()) {
                 this.typeOfData[i] = 'date';
               }
             }
@@ -64,6 +67,45 @@ export class PageFormComponent implements OnInit {
           this.data = cars
           this.keys = Object.keys(this.data)
 
+          for (let i = 0; i < this.keys.length; i++) {
+            this.typeOfData[i] = typeof this.data[this.keys[i]];
+            if (moment(this.data[this.keys[i]], "YYYY-MM-DD", true).isValid()) {
+              this.typeOfData[i] = 'date';
+            }
+          }
+        });
+        break
+    }
+
+  }
+
+  getStructureEdit(): void{
+    switch (this.classItems){
+      case 'users':
+        this.usersService.getUserById(1).subscribe(users => {
+          this.data = users
+          this.keys = Object.keys(this.data)
+          //TODO
+          //CREARE UN METODO
+          for (let i = 0; i < this.keys.length; i++) {
+            this.typeOfData[i] = typeof this.data[this.keys[i]];
+            if (moment(this.data[this.keys[i]], "YYYY-MM-DD", true).isValid()) {
+              this.typeOfData[i] = 'date';
+            }
+          }
+        });
+        break;
+      case 'cars':
+        this.carsService.getCarById(1).subscribe(cars => {
+          this.data = cars
+          this.keys = Object.keys(this.data)
+
+          for (let i = 0; i < this.keys.length; i++) {
+            this.typeOfData[i] = typeof this.data[this.keys[i]];
+            if (moment(this.data[this.keys[i]], "YYYY-MM-DD", true).isValid()) {
+              this.typeOfData[i] = 'date';
+            }
+          }
         });
         break
     }

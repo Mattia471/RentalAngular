@@ -1,19 +1,26 @@
+<div class="container" style="width:30%">
+  <div class="card" style="padding: 50px">
+    <ng-container *ngIf="obj!=null">
+      <h2 class="text-black text-uppercase">Modifica {{classes}}</h2>
 
-<div class="container">
-  <ng-container *ngIf="user!=null">
-    <label class="text-black text-uppercase">Modifica {{classes}}</label>
       <div class="row" *ngFor="let key of keys; let i = index">
         <label class="text-black text-uppercase">{{key}}</label>
-        <input  class="form-control" type="{{typeOfData[i]}}" value="{{data[key]}}" placeholder="Inserisci valore">
+        <input class="form-control" type="{{typeOfData[i]}}" value="{{data[key]}}" placeholder="Inserisci valore">
       </div>
-  </ng-container>
-  <ng-container *ngIf="user===null">
-    <label class="text-black">Aggiunta {{classes}}</label>
-    <div class="row" *ngFor="let key of keys">
-      <label class="text-black text-uppercase">{{key}}</label>
-      <input class="form-control" placeholder="Inserisci valore">
-    </div>
-  </ng-container>
+    </ng-container>
 
+
+    <ng-container *ngIf="obj===null">
+      <h2 class="text-black text-uppercase">Aggiunta {{classes}}</h2>
+      <form action="" method="POST">
+        <div class="row" *ngFor="let key of keys; let i=index">
+          <label class="text-black text-uppercase">{{key}}</label>
+          <input class="form-control" type="{{typeOfData[i]}}" placeholder="Inserisci valore">
+        </div>
+      </form>
+
+    </ng-container>
+    <button class="btn btn-success form-control">Conferma</button>
+  </div>
 
 </div>

@@ -11,13 +11,17 @@ const routes: Routes = [
     path : 'users',
     children:[
       {path : '', component: UserPageComponent},
-      {path : 'edit/:user/:class', component: PageFormComponent}, //mandare a form
+      {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
       {path : 'add/:class', component: PageFormComponent}, //mandare a form
     ]
   },
   {
     path : 'cars',
-    component: CarPageComponent
+    children:[
+      {path : '', component: CarPageComponent},
+      {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
+      {path : 'add/:class', component: PageFormComponent}, //mandare a form
+    ]
   }
 ];
 

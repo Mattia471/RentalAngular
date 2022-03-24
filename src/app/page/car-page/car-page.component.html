@@ -1,4 +1,8 @@
 <ng-container *ngIf="cars !== undefined">
-  <app-table [config]="carsTable" [data]="cars"></app-table>
+  <app-table
+    [config]="carsTable"
+    [data]="cars"
+    (btnEventEmit)="btnClicked($event)">
+  </app-table>
 </ng-container>
 
