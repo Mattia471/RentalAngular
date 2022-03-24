@@ -137,7 +137,14 @@ export class TableComponent implements OnInit {
   }
 
   btnClicked(event: string, data: any): void {
-    const eventClicked = {item: data, action: event}; //contiene i valori che dovrà utilizzare lo strato di servizio
+    let classes ='';
+    if(data.birthdate){
+      classes='users';
+    }else{
+      classes='cars';
+    }
+    const eventClicked = {item: data, action: event, classType: classes}; //contiene i valori che dovrà utilizzare lo strato di servizio
+
     this.btnEventEmit.emit(eventClicked); //oggetto emesso
   }
 

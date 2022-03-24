@@ -17,6 +17,8 @@ import {FormsModule} from "@angular/forms";
 import { UserPageComponent } from './page/user-page/user-page.component';
 import { CarPageComponent } from './page/car-page/car-page.component';
 import { SlicePipe } from './util/pipes/pagination/slice.pipe';
+import { CustomFormComponent } from './component/custom-form/custom-form.component';
+import { PageFormComponent } from './page/page-form/page-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SlicePipe } from './util/pipes/pagination/slice.pipe';
     UserPageComponent,
     SlicePipe,
     CarPageComponent,
+    CustomFormComponent,
+    PageFormComponent,
   ],
   imports: [
     BrowserModule,

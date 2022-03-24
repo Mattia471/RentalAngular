@@ -29,10 +29,10 @@ export class UserPageComponent implements OnInit {
   btnClicked($event: any) {
     switch ($event.action) {
       case 'add':
-        this.router.navigate(['add'], {relativeTo: this.route});
+        this.router.navigate(['add/'  + $event.classType], {relativeTo: this.route});
         break;
       case 'edit':
-        this.router.navigate(['edit'], {relativeTo: this.route});
+        this.router.navigate(['edit/' + $event.item.id + '/' + $event.classType], {relativeTo: this.route});
         break;
       case 'delete':
         this.delete($event.item);
