@@ -1,8 +1,19 @@
-<div class="card">
-  <ng-container *ngIf="id!=null">
-    Modifica {{classes}}
+
+<div class="container">
+  <ng-container *ngIf="user!=null">
+    <label class="text-black text-uppercase">Modifica {{classes}}</label>
+      <div class="row" *ngFor="let key of keys; let i = index">
+        <label class="text-black text-uppercase">{{key}}</label>
+        <input  class="form-control" type="{{typeOfData[i]}}" value="{{data[key]}}" placeholder="Inserisci valore">
+      </div>
   </ng-container>
-  <ng-container *ngIf="id===null">
-    Aggiunta {{classes}}
+  <ng-container *ngIf="user===null">
+    <label class="text-black">Aggiunta {{classes}}</label>
+    <div class="row" *ngFor="let key of keys">
+      <label class="text-black text-uppercase">{{key}}</label>
+      <input class="form-control" placeholder="Inserisci valore">
+    </div>
   </ng-container>
+
+
 </div>

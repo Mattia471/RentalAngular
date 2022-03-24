@@ -28,7 +28,7 @@ export class UsersService {
 
   //recupera utenti da id
   getUserById(id:number): Observable<any> {
-    const url = `${this.userUrl}/user/`+id;
+    const url = `${this.userUrl}`+id;
     return this.http.get<UsersModel[]>(url)
       .pipe(
       tap(_ => this.log('UTENTE Selezionato con id: ' +id)),

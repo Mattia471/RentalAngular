@@ -3,6 +3,7 @@ import { MyTableConfig} from "../../configCustom/table/config";
 import {catchError, Observable, of, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CarsModel} from "../../model/cars";
+import {UsersModel} from "../../model/users";
 
 
 
@@ -20,6 +21,7 @@ export class CarsService {
   }
 
 
+
   //recupera lista intera
   getCars(): Observable<CarsModel[]> {
     return this.http.get<CarsModel[]>(this.carUrl).pipe(
@@ -28,7 +30,15 @@ export class CarsService {
     );
   }
 
-
+//recupera cars da id
+  getCarById(id:number): Observable<any> {
+    const url = `${this.carUrl}`+id;
+    return this.http.get<CarsModel[]>(url)
+      .pipe(
+        tap(_ => this.log('AUTO Selezionato con id: ' +id)),
+        catchError(this.handleError<CarsModel>('getCarById'))
+      );
+  }
 
   /**
    * Handle Http operation that failed.

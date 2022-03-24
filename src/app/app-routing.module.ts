@@ -11,7 +11,7 @@ const routes: Routes = [
     path : 'users',
     children:[
       {path : '', component: UserPageComponent},
-      {path : 'edit/:id/:class', component: PageFormComponent}, //mandare a form
+      {path : 'edit/:user/:class', component: PageFormComponent}, //mandare a form
       {path : 'add/:class', component: PageFormComponent}, //mandare a form
     ]
   },
