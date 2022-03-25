@@ -13,7 +13,7 @@ import {UsersModel} from "../../model/users";
 })
 export class CarsService {
 
-  private carUrl = 'api/cars/';
+  private carUrl = 'http://localhost:3000/cars';
   tableConfig !: MyTableConfig;
 
   constructor(private http: HttpClient)
@@ -32,13 +32,24 @@ export class CarsService {
 
 //recupera cars da id
   getCarById(id:number): Observable<any> {
-    const url = `${this.carUrl}`+id;
+    const url = `${this.carUrl}/`+id;
     return this.http.get<CarsModel[]>(url)
       .pipe(
         tap(_ => this.log('AUTO Selezionato con id: ' +id)),
         catchError(this.handleError<CarsModel>('getCarById'))
       );
   }
+
+  //delete
+  deleteCar(id:number): Observable<CarsModel> {
+    const url = `${this.carUrl}/`+id;
+    return this.http.delete<CarsModel>(url)
+      .pipe(
+        tap(_ => this.log(`AUTO Eliminata con id: `+ id)),
+        catchError(this.handleError<CarsModel>(`deleteCar`))
+      );
+  }
+
 
   /**
    * Handle Http operation that failed.

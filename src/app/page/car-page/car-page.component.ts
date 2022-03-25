@@ -35,24 +35,24 @@ export class CarPageComponent implements OnInit {
         this.router.navigate(['edit/' + $event.item.id+ '/' + 'cars'], {relativeTo: this.route});
         break;
       case 'delete':
-
+        this.delete($event.item);
         break;
     }
   }
 
-  /*delete(user: UsersModel): void {
-    this.carService.de(user.id)
-      .subscribe(o => {
-        this.getCars();
-      });
-  }
-
-*/
   //recuperp gli utenti dal servizio
   getCars(): void {
     this.carService.getCars().subscribe(cars => {
       this.cars = cars
     });
   }
+
+  delete(car: CarsModel): void {
+    this.carService.deleteCar(car.id)
+      .subscribe(o => {
+        this.getCars();
+      });
+  }
+
 
 }

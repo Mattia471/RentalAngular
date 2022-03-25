@@ -38,7 +38,7 @@ export class TableComponent implements OnInit {
 
   //dopo che vengono inizializzati tutte le proprietà associate a dati di una direttiva
   ngOnInit(): void {
-    this.getNumberOfPages()
+
   }
 
   //quando viene modificato un valore tramite direttiva si innesca questo metodo
@@ -50,6 +50,7 @@ export class TableComponent implements OnInit {
       this.lastC = this.config.order.defaultColumn;
       this.orderType = this.getTypeOrder(this.config.order.orderType);
       this.sortBy(this.lastC);
+      this.getNumberOfPages()
     }
   }
 

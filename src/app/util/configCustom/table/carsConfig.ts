@@ -28,7 +28,7 @@ const Search: MySearch =
 const Pagination: MyPagination =
   {
     itemForPage: 5,
-    itemForPageOptions: [4, 8, 12, 16]
+    itemForPageOptions: [5,10,15,20]
   };
 
 export const CarsConfig: MyTableConfig = {

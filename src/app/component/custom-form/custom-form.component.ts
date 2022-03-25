@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
+import {FormControl, FormGroup} from "@angular/forms";
+import {UsersModel} from "../../util/model/users";
 
 @Component({
   selector: 'app-custom-form',
@@ -9,6 +11,7 @@ import {CarsService} from "../../util/service/cars/cars.service";
 })
 export class CustomFormComponent implements OnInit {
 
+
   @Input() item !: any;
 
   @Input() classes: any;
@@ -16,7 +19,8 @@ export class CustomFormComponent implements OnInit {
   @Input() keys:any;
   @Input() data:any;
   @Input() typeOfData:any;
-  //
+  @Input() form:any;
+
 
   constructor(
     private usersService: UsersService,
@@ -28,4 +32,20 @@ export class CustomFormComponent implements OnInit {
 
   }
 
+  onSubmitAdd(user: any[]){
+    this.usersService.addUser(user)
+      .subscribe(o => {
+
+      });
+    console.log(this.form.value);
+  }
+
+  onSubmitEdit(user: any[]){
+
+    this.usersService.editUser(user)
+      .subscribe(o => {
+
+      });
+    console.log(this.form.value);
+  }
 }

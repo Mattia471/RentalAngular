@@ -1,4 +1,12 @@
-<div *ngIf="data">
-  <app-custom-form [item]="itemContent" [classes]="classItems" [obj]="itemContent" [data]="data"
-                   [keys]="keys" [typeOfData]="typeOfData"></app-custom-form>
+<div *ngIf="keyForm">
+  <app-custom-form
+                    [item]="itemContent"
+                   [classes]="classItems"
+                   [obj]="itemContent"
+                   [data]="data"
+                   [keys]="keyForm"
+                   [typeOfData]="typeOfData"
+                   [form]="form">
+
+  </app-custom-form>
 </div>

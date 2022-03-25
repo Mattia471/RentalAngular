@@ -32,7 +32,7 @@ export class UserPageComponent implements OnInit {
         this.router.navigate(['add/'  + 'users'], {relativeTo: this.route});
         break;
       case 'edit':
-        this.router.navigate(['edit/' + $event.item.id+ '/'  + 'users'], {relativeTo: this.route});
+        this.router.navigate(['edit/' + $event.item.id+ '/users'], {relativeTo: this.route});
         break;
       case 'delete':
         this.delete($event.item);

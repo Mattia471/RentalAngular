@@ -11,7 +11,7 @@ import {UsersModel} from "../../model/users";
 })
 export class UsersService {
 
-  private userUrl = 'api/users/';
+  private userUrl = 'http://localhost:3000/users';
   tableConfig !: MyTableConfig;
 
   constructor(private http: HttpClient)
@@ -28,26 +28,17 @@ export class UsersService {
 
   //recupera utenti da id
   getUserById(id:number): Observable<any> {
-    const url = `${this.userUrl}`+id;
+    const url = `${this.userUrl}/`+id;
     return this.http.get<UsersModel[]>(url)
       .pipe(
       tap(_ => this.log('UTENTE Selezionato con id: ' +id)),
       catchError(this.handleError<UsersModel>('getUserById'))
     );
   }
-/*
-  //edit
-  editUser(user : UsersModel): Observable<any> {
-    return this.http.put<UsersModel[]>(this.userUrl+"/edit",user.id)
-      .pipe(
-      tap(_ => this.log('UTENTE MODIFICATO')),
-      catchError(this.handleError<UsersModel[]>('editUser', []))
-    );
-  }
-*/
+
   //delete
   deleteUser(id:number): Observable<UsersModel> {
-    const url = `${this.userUrl}/delete/`+id;
+    const url = `${this.userUrl}/`+id;
     return this.http.delete<UsersModel>(url)
       .pipe(
         tap(_ => this.log(`UTENTE Eliminato con id: `+ id)),
@@ -55,7 +46,21 @@ export class UsersService {
       );
   }
 
+  addUser(user: any[]): Observable<UsersModel> {
+    return this.http.post<UsersModel>(this.userUrl,user)
+      .pipe(
+        tap(_ => this.log("Aggiunto nuovo utente")),
+        catchError(this.handleError<UsersModel>(`addUser`))
+      );
+  }
 
+  editUser(user: any[]): Observable<UsersModel> {
+    return this.http.put<UsersModel>(this.userUrl+'/1',user)
+      .pipe(
+        tap(_ => this.log("Utente Modificato")),
+        catchError(this.handleError<UsersModel>(`addUser`))
+      );
+  }
 
 
 
