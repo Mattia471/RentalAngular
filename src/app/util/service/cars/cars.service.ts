@@ -50,6 +50,23 @@ export class CarsService {
       );
   }
 
+  addCar(car: any[]): Observable<UsersModel> {
+    return this.http.post<UsersModel>(this.carUrl,car)
+      .pipe(
+        tap(_ => this.log("Aggiunto nuova auto")),
+        catchError(this.handleError<UsersModel>(`addCar`))
+      );
+  }
+
+  editCar(car: any[],id:number): Observable<UsersModel> {
+    const url = `${this.carUrl}/`+id;
+    return this.http.put<UsersModel>(url,car)
+      .pipe(
+        tap(_ => this.log("Auto Modificata")),
+        catchError(this.handleError<UsersModel>(`editCar`))
+      );
+  }
+
 
   /**
    * Handle Http operation that failed.

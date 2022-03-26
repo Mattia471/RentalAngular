@@ -3,26 +3,24 @@ import {AddButton} from "../button/addButton";
 import {EditButton} from "../button/editButton";
 import {DeleteButton} from "../button/deleteButton";
 
-
-
 //array heder
 const Header: MyHeader[] = [
-  {key: 'licenseplate',label:'Targa'},
-  {key: 'manufacturer',label:'Casa automobilistica'},
-  {key: 'model',label:'Modello'},
-  {key: 'type',label:'Tipo'},
-  {key: 'year',label:'Anno'},
+  {key: 'userId',label:'Utente'},
+  {key: 'carId',label:'Auto'},
+  {key: 'startDate',label:'Inizio Noleggio'},
+  {key: 'endDate',label:'Fine noleggio'},
+  {key: 'status',label:'Stato Prenotazione'},
 ];
 
 const Order: MyOrder =
   {
     orderType: 'ascending',
-    defaultColumn: 'model'
+    defaultColumn: 'startDate'
   };
 
 const Search: MySearch =
   {
-    columns: ['licenseplate', 'manufacturer', 'model', 'type','year']
+    columns: ['userId', 'carId', 'startDate', 'endDate','status']
   };
 
 const Pagination: MyPagination =
@@ -31,7 +29,7 @@ const Pagination: MyPagination =
     itemForPageOptions: [5,10,15,20]
   };
 
-export const CarsConfig: MyTableConfig = {
+export const ReservationsConfig: MyTableConfig = {
   order: Order,
   header: Header,
   search: Search,

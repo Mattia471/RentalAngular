@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MyTableConfig} from "../../../util/configCustom/table/config";
+import {MyTableConfig} from "../../util/configCustom/table/config";
 import * as _ from 'lodash';
 
 @Component({
