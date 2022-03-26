@@ -54,11 +54,12 @@ export class UsersService {
       );
   }
 
-  editUser(user: any[]): Observable<UsersModel> {
-    return this.http.put<UsersModel>(this.userUrl+'/1',user)
+  editUser(user: any[],id:number): Observable<UsersModel> {
+    const url = `${this.userUrl}/`+id;
+    return this.http.put<UsersModel>(url,user)
       .pipe(
         tap(_ => this.log("Utente Modificato")),
-        catchError(this.handleError<UsersModel>(`addUser`))
+        catchError(this.handleError<UsersModel>(`editUser`))
       );
   }
 

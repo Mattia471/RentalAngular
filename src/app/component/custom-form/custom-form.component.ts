@@ -40,12 +40,10 @@ export class CustomFormComponent implements OnInit {
     console.log(this.form.value);
   }
 
-  onSubmitEdit(user: any[]){
-
-    this.usersService.editUser(user)
+  onSubmitEdit(user: any[],id:any){
+    this.usersService.editUser(user,id)
       .subscribe(o => {
 
       });
-    console.log(this.form.value);
   }
 }

@@ -8,7 +8,7 @@
           <label class="text-black text-uppercase">{{key}}</label>
           <input [formControlName]="key"  class="form-control" type="{{typeOfData[i]}}" [defaultValue]="data[key]">
         </div>
-        <button type="submit" class="btn btn-success form-control" (click)="onSubmitEdit(form.value)">Conferma</button>
+        <button type="submit" class="btn btn-success form-control" (click)="onSubmitEdit(form.value,obj)">Conferma</button>
       </form>
     </ng-container>
 
