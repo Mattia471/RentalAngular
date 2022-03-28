@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="card" style="padding: 50px">
+    <ng-container *ngIf="obj!==null">
+      <h2 class="text-black text-uppercase">Modifica {{classes}}</h2>
+      <form [formGroup]="form" *ngIf="data">
+
+        <div class="row" *ngFor="let key of keys; let i=index">
+          <label class="text-black text-uppercase">{{key}}</label>
+          <input [formControlName]="key" class="form-control" type="{{typeOfData[i]}}" [defaultValue]="data[key]">
+        </div>
+        <button type="submit" class="btn btn-success form-control" (click)="onSubmitEdit(form.value,obj)">Conferma
+        </button>
+      </form>
+    </ng-container>
+
+
+
+
+
+    <ng-container *ngIf="obj===null">
+      <h4 class="text-black text-uppercase">RICERCA AUTO </h4>
+      <form [formGroup]="form">
+
+        <div class="row" *ngFor="let key of keys; let i=index">
+          <ng-container *ngIf="key!=='carId' && key!=='status'">
+            <div class="col">
+              <label class="text-black text-uppercase">{{key}}</label>
+              <input [formControlName]="key" class="form-control" type="{{typeOfData[i]}}" aria-required="true">
+            </div>
+          </ng-container>
+        </div>
+        <hr>
+        <ng-container *ngIf="!carAvailable">
+          <button type="submit" class="btn btn-success form-control" (click)="onSubmitSearch(form.value)">Avvia
+            Ricerca
+          </button>
+        </ng-container>
+        <ng-container *ngIf="carAvailable">
+          <button type="submit" class="btn btn-success form-control" (click)="onSubmitPrenota(form.value)">Prenota Auto
+          </button>
+        </ng-container>
+
+
+        <hr>
+        <ng-container *ngIf="carAvailable">
+          <div class="row" *ngFor="let car of carAvailable; let i = index" >
+            <ng-container *ngIf="i<5">
+              <div class="col">
+                <b class="text-dark">Auto disponibile: </b>
+              </div>
+
+              <div class="col">
+                <ng-container>
+
+                  <input type="radio" [formControlName]="'carId'"  [value]="car.id">
+                </ng-container>
+                <span class="text-dark" style="padding-left:10px"><b>{{car.model}}</b>:<br>Targa {{car.licenseplate}}<br>Anno {{car.year}}</span>
+              </div>
+              <hr>
+            </ng-container>
+          </div>
+
+        </ng-container>
+      </form>
+
+    </ng-container>
+
+  </div>
+
+</div>

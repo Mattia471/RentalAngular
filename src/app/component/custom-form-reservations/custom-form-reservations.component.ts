@@ -5,13 +5,16 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {UsersModel} from "../../util/model/users";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
+import {CarsModel} from "../../util/model/cars";
+import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
+import {CarsConfig} from "../../util/configCustom/table/carsConfig";
 
 @Component({
-  selector: 'app-custom-form',
-  templateUrl: './custom-form.component.html',
-  styleUrls: ['./custom-form.component.css']
+  selector: 'app-custom-form-reservations',
+  templateUrl: './custom-form-reservations.component.html',
+  styleUrls: ['./custom-form-reservations.component.css']
 })
-export class CustomFormComponent implements OnInit {
+export class CustomFormReservationsComponent implements OnInit {
 
 
   @Input() item !: any;
@@ -22,7 +25,10 @@ export class CustomFormComponent implements OnInit {
   @Input() data: any;
   @Input() typeOfData: any;
   @Input() form: any;
+  @Input() carsAvailable: any;
 
+  carAvailable!:CarsModel[];
+  carsTable = CarsConfig;
 
   constructor(
      public usersService: UsersService,
@@ -37,35 +43,26 @@ export class CustomFormComponent implements OnInit {
 
   }
 
-  onSubmitAdd(object: any[]) {
-    if (this.classes === 'users') {
-      this.usersService.addUser(object)
-        .subscribe(o => {
-
+  onSubmitSearch(object: any[]) {
+      this.carsService.getCars()
+        .subscribe(cars => {
+          this.carAvailable=cars
         });
-    } else if (this.classes === 'cars') {
-      this.carsService.addCar(object)
-        .subscribe(o => {
+  }
 
-        });
-    }
+  onSubmitPrenota(object: any[]) {
+    this.reservationsService.addReservation(object)
+      .subscribe(o => {
 
+      });
     this.router.navigate(['/' + this.classes], {relativeTo: this.route});
   }
 
   onSubmitEdit(object: any[], id: any) {
-    if (this.classes === 'users') {
-      this.usersService.editUser(object, id)
+      this.reservationsService.editReservation(object, id)
         .subscribe(o => {
 
         });
-    } else if (this.classes === 'cars') {
-      this.carsService.editCar(object, id)
-        .subscribe(o => {
-
-        });
-    }
-
     this.router.navigate(['/' + this.classes], {relativeTo: this.route});
   }
 }

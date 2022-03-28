@@ -30,7 +30,7 @@ export class ReservationsService {
     const url = `${this.reservationUrl}/`+id;
     return this.http.get<ReservationsModel[]>(url)
       .pipe(
-        tap(_ => this.log('UTENTE Selezionato con id: ' +id)),
+        tap(_ => this.log('PRENOTAZIONE CON ID: ' +id)),
         catchError(this.handleError<ReservationsModel>('getReservationById'))
       );
   }
@@ -40,7 +40,7 @@ export class ReservationsService {
     const url = `${this.reservationUrl}/`+id;
     return this.http.delete<ReservationsModel>(url)
       .pipe(
-        tap(_ => this.log(`UTENTE Eliminato con id: `+ id)),
+        tap(_ => this.log(`PRENOTAZIONE CON ID:`+ id +' ELIMINATO')),
         catchError(this.handleError<ReservationsModel>(`deleteReservation`))
       );
   }
@@ -48,7 +48,7 @@ export class ReservationsService {
   addReservation(user: any[]): Observable<ReservationsModel> {
     return this.http.post<ReservationsModel>(this.reservationUrl,user)
       .pipe(
-        tap(_ => this.log("Aggiunto nuovo utente")),
+        tap(_ => this.log("PRENOTAZIONE EFFETTUATA")),
         catchError(this.handleError<ReservationsModel>(`addReservation`))
       );
   }
@@ -57,7 +57,7 @@ export class ReservationsService {
     const url = `${this.reservationUrl}/`+id;
     return this.http.put<ReservationsModel>(url,user)
       .pipe(
-        tap(_ => this.log("Utente Modificato")),
+        tap(_ => this.log("PRENOTAZIONE MODIFICATA")),
         catchError(this.handleError<ReservationsModel>(`editReservation`))
       );
   }

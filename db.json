@@ -5,7 +5,8 @@
       "surname": "Ruppeli",
       "email": "gruppeli2@illinois.edu",
       "birthdate": "2021-08-17",
-      "id": 3
+      "id": 3,
+      "role": true
     },
     {
       "id": 4,
@@ -1653,6 +1654,20 @@
       "startDate": "2021-12-19",
       "endDate": "2022-03-26",
       "status": "IN ATTESA"
+    },
+    {
+      "carId": 6,
+      "startDate": "2022-03-26",
+      "endDate": "2022-03-25",
+      "status": "",
+      "id": 101
+    },
+    {
+      "carId": 6,
+      "startDate": "2023-04-20",
+      "endDate": "2022-07-08",
+      "status": "",
+      "id": 102
     }
   ]
 }

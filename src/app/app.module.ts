@@ -18,7 +18,9 @@ import { CarPageComponent } from './page/car-page/car-page.component';
 import { SlicePipe } from './util/pipes/pagination/slice.pipe';
 import { CustomFormComponent } from './component/custom-form/custom-form.component';
 import { PageFormComponent } from './page/page-form/page-form.component';
+import { PageFormReservationsComponent } from './page/page-form-reservations/page-form-reservations.component';
 import { ReservationPageComponent } from './page/reservation-page/reservation-page.component';
+import { CustomFormReservationsComponent } from './component/custom-form-reservations/custom-form-reservations.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ReservationPageComponent } from './page/reservation-page/reservation-pa
     CustomFormComponent,
     PageFormComponent,
     ReservationPageComponent,
+    CustomFormReservationsComponent,
+    PageFormReservationsComponent
   ],
   imports: [
     BrowserModule,

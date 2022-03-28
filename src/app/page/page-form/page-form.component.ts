@@ -100,24 +100,6 @@ export class PageFormComponent implements OnInit {
 
         console.log(this.keyForm, this.typeOfData, this.form)
         break
-
-      case 'reservations':
-
-        for (let i = 0; i < this.reservationsPattern.settings.length; i++) {
-          this.keyForm.push(this.reservationsPattern.settings[i].key)
-          this.typeOfData.push(this.reservationsPattern.settings[i].type)
-        }
-
-        this.form = new FormGroup({
-          userId: new FormControl(''),
-          carId: new FormControl(''),
-          startDate: new FormControl(''),
-          endDate: new FormControl(''),
-          status: new FormControl('')
-        })
-
-        console.log(this.keyForm, this.typeOfData, this.form)
-        break
     }
 
   }
@@ -164,26 +146,6 @@ export class PageFormComponent implements OnInit {
           console.log(this.keyForm, this.typeOfData, this.form, this.data)
         });
         break
-
-      case 'reservations':
-        this.reservationsService.getReservationById(this.itemContent).subscribe(reservations => {
-          this.data = reservations
-          for (let i = 0; i < this.reservationsPattern.settings.length; i++) {
-            this.keyForm[i] = this.reservationsPattern.settings[i].key
-            this.typeOfData[i] = this.reservationsPattern.settings[i].type
-          }
-
-          this.form = new FormGroup({
-            userId: new FormControl(reservations.userId),
-            carId: new FormControl(reservations.carId),
-            startDate: new FormControl(reservations.startDate),
-            endDate: new FormControl(reservations.endDate),
-            status: new FormControl(reservations.status)
-          })
-
-          console.log(this.keyForm, this.typeOfData, this.form)
-        });
-        break;
     }
 
   }
