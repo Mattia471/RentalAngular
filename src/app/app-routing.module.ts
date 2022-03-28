@@ -5,6 +5,7 @@ import {UserPageComponent} from "./page/user-page/user-page.component";
 import {CarPageComponent} from "./page/car-page/car-page.component";
 import {CustomFormComponent} from "./component/custom-form/custom-form.component";
 import {PageFormComponent} from "./page/page-form/page-form.component";
+import {ReservationPageComponent} from "./page/reservation-page/reservation-page.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,14 @@ const routes: Routes = [
     path : 'cars',
     children:[
       {path : '', component: CarPageComponent},
+      {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
+      {path : 'add/:class', component: PageFormComponent}, //mandare a form
+    ]
+  },
+  {
+    path : 'reservations',
+    children:[
+      {path : '', component: ReservationPageComponent},
       {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
       {path : 'add/:class', component: PageFormComponent}, //mandare a form
     ]

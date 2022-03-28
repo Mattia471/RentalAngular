@@ -4,5 +4,5 @@ export interface ReservationsModel {
   carId: number;
   startDate: string;
   endDate: string;
-  status: boolean;
+  status: string;
 }

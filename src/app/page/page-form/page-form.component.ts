@@ -7,6 +7,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {FormConfig} from "../../util/configCustom/form/config";
 import {UsersFormConfig} from "../../util/configCustom/form/usersConfig";
 import {CarsFormConfig} from "../../util/configCustom/form/carsConfig";
+import {ReservationsService} from "../../util/service/reservations/reservations.service";
+import {ReservationsFormConfig} from "../../util/configCustom/form/reservationsConfig";
 
 
 @Component({
@@ -26,11 +28,13 @@ export class PageFormComponent implements OnInit {
 
   usersPattern: FormConfig = UsersFormConfig;
   carsPattern: FormConfig = CarsFormConfig;
+  reservationsPattern: FormConfig = ReservationsFormConfig;
 
   constructor(
-    public route: ActivatedRoute,
-    public usersService: UsersService,
-    public carsService: CarsService
+     public route: ActivatedRoute,
+     public usersService: UsersService,
+     public carsService: CarsService,
+     public reservationsService : ReservationsService
   ) {
   }
 
@@ -60,7 +64,6 @@ export class PageFormComponent implements OnInit {
 
 
 
-  //TODO SISTEMARE GETUSERBYID FAR RECUPERARE STRUTTURA UTENTE E CARS
   getStructureAdd(): void {
     switch (this.classItems) {
       case 'users':
@@ -79,6 +82,7 @@ export class PageFormComponent implements OnInit {
 
         console.log(this.keyForm, this.typeOfData, this.form)
         break;
+
       case 'cars':
 
         for (let i = 0; i < this.carsPattern.settings.length; i++) {
@@ -96,6 +100,24 @@ export class PageFormComponent implements OnInit {
 
         console.log(this.keyForm, this.typeOfData, this.form)
         break
+
+      case 'reservations':
+
+        for (let i = 0; i < this.reservationsPattern.settings.length; i++) {
+          this.keyForm.push(this.reservationsPattern.settings[i].key)
+          this.typeOfData.push(this.reservationsPattern.settings[i].type)
+        }
+
+        this.form = new FormGroup({
+          userId: new FormControl(''),
+          carId: new FormControl(''),
+          startDate: new FormControl(''),
+          endDate: new FormControl(''),
+          status: new FormControl('')
+        })
+
+        console.log(this.keyForm, this.typeOfData, this.form)
+        break
     }
 
   }
@@ -103,6 +125,7 @@ export class PageFormComponent implements OnInit {
 
   getStructureEdit(): void {
     switch (this.classItems) {
+
       case 'users':
         this.usersService.getUserById(this.itemContent).subscribe(users => {
           this.data = users
@@ -121,6 +144,7 @@ export class PageFormComponent implements OnInit {
           console.log(this.keyForm, this.typeOfData, this.form)
         });
         break;
+
       case 'cars':
         this.carsService.getCarById(this.itemContent).subscribe(cars => {
           this.data = cars
@@ -140,6 +164,26 @@ export class PageFormComponent implements OnInit {
           console.log(this.keyForm, this.typeOfData, this.form, this.data)
         });
         break
+
+      case 'reservations':
+        this.reservationsService.getReservationById(this.itemContent).subscribe(reservations => {
+          this.data = reservations
+          for (let i = 0; i < this.reservationsPattern.settings.length; i++) {
+            this.keyForm[i] = this.reservationsPattern.settings[i].key
+            this.typeOfData[i] = this.reservationsPattern.settings[i].type
+          }
+
+          this.form = new FormGroup({
+            userId: new FormControl(reservations.userId),
+            carId: new FormControl(reservations.carId),
+            startDate: new FormControl(reservations.startDate),
+            endDate: new FormControl(reservations.endDate),
+            status: new FormControl(reservations.status)
+          })
+
+          console.log(this.keyForm, this.typeOfData, this.form)
+        });
+        break;
     }
 
   }

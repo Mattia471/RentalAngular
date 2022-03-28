@@ -17,9 +17,9 @@ export class CarPageComponent implements OnInit {
 
 
   constructor(
-    private carService: CarsService,
-    private route : ActivatedRoute,
-    private router: Router,
+     public carService: CarsService,
+     public route : ActivatedRoute,
+     public router: Router,
   ) { }
 
   ngOnInit(): void {

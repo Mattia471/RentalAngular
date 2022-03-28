@@ -4,6 +4,7 @@ import {CarsService} from "../../util/service/cars/cars.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {UsersModel} from "../../util/model/users";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ReservationsService} from "../../util/service/reservations/reservations.service";
 
 @Component({
   selector: 'app-custom-form',
@@ -24,10 +25,11 @@ export class CustomFormComponent implements OnInit {
 
 
   constructor(
-    private usersService: UsersService,
-    private carsService: CarsService,
-    private router: Router,
-    private route: ActivatedRoute,
+     public usersService: UsersService,
+     public carsService: CarsService,
+     public reservationsService : ReservationsService,
+     public router: Router,
+     public route: ActivatedRoute,
   ) {
   }
 
@@ -41,8 +43,13 @@ export class CustomFormComponent implements OnInit {
         .subscribe(o => {
 
         });
-    } else {
+    } else if (this.classes === 'cars') {
       this.carsService.addCar(object)
+        .subscribe(o => {
+
+        });
+    } else if (this.classes === 'reservations') {
+      this.reservationsService.addReservation(object)
         .subscribe(o => {
 
         });
@@ -57,8 +64,13 @@ export class CustomFormComponent implements OnInit {
         .subscribe(o => {
 
         });
-    } else {
+    } else if (this.classes === 'cars') {
       this.carsService.editCar(object, id)
+        .subscribe(o => {
+
+        });
+    }else if (this.classes === 'reservations') {
+      this.reservationsService.editReservation(object, id)
         .subscribe(o => {
 
         });
