@@ -21,7 +21,7 @@ import { PageFormComponent } from './page/page-form/page-form.component';
 import { PageFormReservationsComponent } from './page/page-form-reservations/page-form-reservations.component';
 import { ReservationPageComponent } from './page/reservation-page/reservation-page.component';
 import { CustomFormReservationsComponent } from './component/custom-form-reservations/custom-form-reservations.component';
-
+import {LoginPageComponent} from "./page/login-page/login-page.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { CustomFormReservationsComponent } from './component/custom-form-reserva
     PageFormComponent,
     ReservationPageComponent,
     CustomFormReservationsComponent,
-    PageFormReservationsComponent
+    PageFormReservationsComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

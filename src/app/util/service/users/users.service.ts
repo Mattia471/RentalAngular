@@ -27,6 +27,16 @@ export class UsersService {
   }
 
   //recupera utenti da id
+  getUserByEmail(email:string): Observable<any> {
+    const url = `${this.userUrl}?email=`+email;
+    return this.http.get<UsersModel[]>(url)
+      .pipe(
+        tap(_ => this.log('UTENTE Selezionato con email: ' +email)),
+        catchError(this.handleError<UsersModel>('getUserById'))
+      );
+  }
+
+  //recupera utenti da id
   getUserById(id:number): Observable<any> {
     const url = `${this.userUrl}/`+id;
     return this.http.get<UsersModel[]>(url)
