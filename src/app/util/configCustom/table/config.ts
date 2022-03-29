@@ -6,10 +6,15 @@ export class MyTableConfig {
   search!: MySearch;
   pagination!: MyPagination;
   actions !: MyButtonConfig [];
+  actionsReservations!: MyButtonConfig[]
 }
 
 export enum MyTableActionEnum {
   ADD , EDIT , DELETE
+}
+
+export enum MyTableActionEnumReservation {
+  ACCEPT , DECLINE
 }
 
 //array dati

@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {UserPageComponent} from "./page/user-page/user-page.component";
 import {CarPageComponent} from "./page/car-page/car-page.component";
-import {CustomFormComponent} from "./component/custom-form/custom-form.component";
 import {PageFormComponent} from "./page/page-form/page-form.component";
 import {ReservationPageComponent} from "./page/reservation-page/reservation-page.component";
 import {PageFormReservationsComponent} from "./page/page-form-reservations/page-form-reservations.component";
 import {LoginPageComponent} from "./page/login-page/login-page.component";
-import { UserGuard} from "./util/service/authentication/basic-guard.service";
+import {UserGuard} from "./util/service/authentication/basic-guard.service";
 import {AdminGuard} from "./util/service/authentication/admin-guard.service";
 import {ProfilePageComponent} from "./page/profile-page/profile-page.component";
 
@@ -34,7 +32,7 @@ const routes: Routes = [
     children:[
       {path : '', component: ReservationPageComponent},
       {path : 'edit/:obj/:class', component: PageFormReservationsComponent}, //mandare a form
-      {path : 'add/:class', component: PageFormReservationsComponent}, //mandare a form
+      {path : 'add/:class', component: PageFormReservationsComponent},
     ]
   },
   {

@@ -5,14 +5,16 @@
       "surname": "Ruppeliu",
       "email": "admin",
       "birthdate": "2021-08-17",
-      "id": 3
+      "id": 3,
+      "role": true
     },
     {
       "name": "Sullivan",
       "surname": "Poxtons",
       "email": "customer",
       "birthdate": "2021-06-22",
-      "id": 4
+      "id": 4,
+      "role": false
     },
     {
       "id": 5,
@@ -834,6 +836,86 @@
     {
       "refreshToken": null,
       "id": 194
+    },
+    {
+      "refreshToken": null,
+      "id": 195
+    },
+    {
+      "refreshToken": null,
+      "id": 196
+    },
+    {
+      "refreshToken": null,
+      "id": 197
+    },
+    {
+      "refreshToken": null,
+      "id": 198
+    },
+    {
+      "refreshToken": null,
+      "id": 199
+    },
+    {
+      "refreshToken": null,
+      "id": 200
+    },
+    {
+      "refreshToken": null,
+      "id": 201
+    },
+    {
+      "refreshToken": null,
+      "id": 202
+    },
+    {
+      "refreshToken": null,
+      "id": 203
+    },
+    {
+      "refreshToken": null,
+      "id": 204
+    },
+    {
+      "refreshToken": null,
+      "id": 205
+    },
+    {
+      "refreshToken": null,
+      "id": 206
+    },
+    {
+      "refreshToken": null,
+      "id": 207
+    },
+    {
+      "refreshToken": null,
+      "id": 208
+    },
+    {
+      "refreshToken": null,
+      "id": 209
+    },
+    {
+      "refreshToken": null,
+      "id": 210
+    },
+    {
+      "refreshToken": null,
+      "id": 211
+    },
+    {
+      "refreshToken": null,
+      "id": 212
+    },
+    {
+      "refreshToken": null,
+      "id": 213
+    },
+    {
+      "refreshToken": null,
+      "id": 214
     }
   ],
   "cars": [
@@ -1654,11 +1736,11 @@
     },
     {
       "id": 16,
-      "carId": 16,
       "userId": 16,
+      "carId": 16,
       "startDate": "2021-05-25",
       "endDate": "2021-05-21",
-      "status": "IN ATTESA"
+      "status": "RIFIUTATA"
     },
     {
       "id": 17,
@@ -1726,11 +1808,11 @@
     },
     {
       "id": 30,
-      "carId": 30,
       "userId": 30,
+      "carId": 30,
       "startDate": "2021-05-24",
       "endDate": "2022-02-26",
-      "status": "IN ATTESA"
+      "status": "CONFERMATA"
     },
     {
       "id": 32,
@@ -1749,18 +1831,12 @@
       "status": "IN ATTESA"
     },
     {
-      "carId": 37,
-      "startDate": "2021-04-07",
-      "endDate": "2021-08-25",
-      "id": 37
-    },
-    {
       "id": 40,
-      "carId": 40,
       "userId": 40,
+      "carId": 40,
       "startDate": "2021-05-02",
       "endDate": "2021-10-05",
-      "status": "IN ATTESA"
+      "status": "CONFERMATA"
     },
     {
       "id": 41,
@@ -1772,11 +1848,11 @@
     },
     {
       "id": 42,
-      "carId": 42,
       "userId": 42,
+      "carId": 42,
       "startDate": "2021-05-23",
       "endDate": "2022-02-16",
-      "status": "IN ATTESA"
+      "status": "RIFIUTATA"
     },
     {
       "id": 44,
@@ -1900,11 +1976,11 @@
     },
     {
       "id": 70,
-      "carId": 70,
       "userId": 70,
+      "carId": 70,
       "startDate": "2021-04-30",
       "endDate": "2021-07-28",
-      "status": "IN ATTESA"
+      "status": "CONFERMATA"
     },
     {
       "id": 71,
@@ -1924,11 +2000,11 @@
     },
     {
       "id": 77,
-      "carId": 77,
       "userId": 77,
+      "carId": 77,
       "startDate": "2021-06-07",
       "endDate": "2021-09-23",
-      "status": "IN ATTESA"
+      "status": "RIFIUTATA"
     },
     {
       "id": 79,
@@ -1980,11 +2056,11 @@
     },
     {
       "id": 90,
-      "carId": 90,
       "userId": 90,
+      "carId": 90,
       "startDate": "2021-06-08",
       "endDate": "2021-05-13",
-      "status": "IN ATTESA"
+      "status": "RIFIUTATA"
     },
     {
       "id": 91,

@@ -2,6 +2,8 @@ import {MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config
 import {AddButton} from "../button/addButton";
 import {EditButton} from "../button/editButton";
 import {DeleteButton} from "../button/deleteButton";
+import {AcceptButton} from "../button/acceptButton";
+import {DeclineButton} from "../button/declineButton";
 
 //array heder
 const Header: MyHeader[] = [
@@ -33,5 +35,6 @@ export const ReservationsConfigCustomer: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
-  actions: [AddButton, EditButton]
+  actions: [AddButton, EditButton],
+  actionsReservations: []
 };

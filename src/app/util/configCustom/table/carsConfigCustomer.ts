@@ -1,4 +1,6 @@
 import {MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
+import {AcceptButton} from "../button/acceptButton";
+import {DeclineButton} from "../button/declineButton";
 
 
 //array heder
@@ -32,5 +34,6 @@ export const CarsConfigCustomer: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
-  actions: []
+  actions: [],
+  actionsReservations: []
 };

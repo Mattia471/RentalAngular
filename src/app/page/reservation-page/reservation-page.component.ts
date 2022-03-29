@@ -27,7 +27,7 @@ export class ReservationPageComponent implements OnInit {
   ngOnInit(): void {
 
 
-    if(this.authService.getUser()?.role) {
+    if(this.authService.getUser()!.role) {
       this.getReservations()
     }else{
       this.getReservationsByCustomer()
@@ -39,8 +39,14 @@ export class ReservationPageComponent implements OnInit {
       case 'add':
         this.router.navigate(['add/'  + 'reservations'], {relativeTo: this.route});
         break;
+      case 'accept':
+        this.accept($event.item);
+        break;
       case 'edit':
         this.router.navigate(['edit/' + $event.item.id+ '/' + 'reservations'], {relativeTo: this.route});
+        break;
+      case 'decline':
+        this.decline($event.item);
         break;
       case 'delete':
         this.delete($event.item);
@@ -66,6 +72,20 @@ export class ReservationPageComponent implements OnInit {
   delete(reservation: ReservationsModel): void {
     this.reservationsService.deleteReservation(reservation.id)
       .subscribe(o => {
+        this.getReservations();
+      });
+  }
+
+  accept(reservation: ReservationsModel): void {
+    this.reservationsService.acceptReservation(reservation)
+      .subscribe(res => {
+        this.getReservations();
+      });
+  }
+
+  decline(reservation: ReservationsModel): void {
+    this.reservationsService.declineReservation(reservation)
+      .subscribe(res => {
         this.getReservations();
       });
   }

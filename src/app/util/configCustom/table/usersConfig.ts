@@ -2,6 +2,8 @@ import {/*MyArray,*/ MyHeader, MyOrder, MyPagination, MySearch, MyTableActionEnu
 import {AddButton} from "../button/addButton";
 import {EditButton} from "../button/editButton";
 import {DeleteButton} from "../button/deleteButton";
+import {AcceptButton} from "../button/acceptButton";
+import {DeclineButton} from "../button/declineButton";
 
 
 //array heder
@@ -36,5 +38,6 @@ export const UsersConfig: MyTableConfig = {
   header: Header,
   search: Search,
   pagination: Pagination,
-  actions: [AddButton,EditButton,DeleteButton]
+  actions: [AddButton,EditButton,DeleteButton],
+  actionsReservations: []
 };
