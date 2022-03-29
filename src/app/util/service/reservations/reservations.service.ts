@@ -70,11 +70,20 @@ export class ReservationsService {
       );
   }
 
-  editReservation(reservation: any[], id: number): Observable<ReservationsModel> {
+  editReservation(reservation: ReservationsModel,id:number,user: UsersModel): Observable<ReservationsModel> {
+    const objectUser = {
+      id: id,
+      userId: user.id,
+      carId: reservation.carId,
+      startDate: reservation.startDate,
+      endDate: reservation.endDate,
+      status: 'IN ATTESA'
+    }
+    console.log(objectUser)
     const url = `${this.reservationUrl}/` + id;
-    return this.http.put<ReservationsModel>(url, reservation)
+    return this.http.put<ReservationsModel>(url, objectUser)
       .pipe(
-        tap(_ => this.log("PRENOTAZIONE MODIFICATA")),
+        tap(_ => this.log("PRENOTAZIONE MODIFICATA ")),
         catchError(this.handleError<ReservationsModel>(`editReservation`))
       );
   }

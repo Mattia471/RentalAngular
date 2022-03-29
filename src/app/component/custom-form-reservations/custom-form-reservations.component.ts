@@ -9,6 +9,7 @@ import {CarsModel} from "../../util/model/cars";
 import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
 import {CarsConfigAdmin} from "../../util/configCustom/table/carsConfig";
 import {AuthService} from "../../util/service/authentication/auth.service";
+import {ReservationsModel} from "../../util/model/reservations";
 
 @Component({
   selector: 'app-custom-form-reservations',
@@ -63,10 +64,12 @@ export class CustomFormReservationsComponent implements OnInit {
 
   }
 
-  onSubmitEdit(object: any[], id: any) {
-      this.reservationsService.editReservation(object, id)
+  onSubmitEdit(object: ReservationsModel,id:number) {
+    this.usersService.getUserByEmail(this.loginService.getUser()!.email).subscribe(user =>{
+      this.reservationsService.editReservation(object,id,user[0])
         .subscribe(o => {
           this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });
+    })
   }
 }
