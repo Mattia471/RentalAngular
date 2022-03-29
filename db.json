@@ -2,20 +2,17 @@
   "users": [
     {
       "name": "Glyn",
-      "surname": "Ruppeli",
-      "email": "gruppeli2@illinois.edu",
+      "surname": "Ruppeliu",
+      "email": "admin",
       "birthdate": "2021-08-17",
-      "id": 3,
-      "role": true
+      "id": 3
     },
     {
-      "id": 4,
       "name": "Sullivan",
-      "surname": "Poxton",
-      "email": "prova1@gmail.com",
-      "password": "1234",
+      "surname": "Poxtons",
+      "email": "customer",
       "birthdate": "2021-06-22",
-      "role": false
+      "id": 4
     },
     {
       "id": 5,
@@ -749,6 +746,94 @@
     {
       "refreshToken": null,
       "id": 172
+    },
+    {
+      "refreshToken": null,
+      "id": 173
+    },
+    {
+      "refreshToken": null,
+      "id": 174
+    },
+    {
+      "refreshToken": null,
+      "id": 175
+    },
+    {
+      "refreshToken": null,
+      "id": 176
+    },
+    {
+      "refreshToken": null,
+      "id": 177
+    },
+    {
+      "refreshToken": null,
+      "id": 178
+    },
+    {
+      "refreshToken": null,
+      "id": 179
+    },
+    {
+      "refreshToken": null,
+      "id": 180
+    },
+    {
+      "refreshToken": null,
+      "id": 181
+    },
+    {
+      "refreshToken": null,
+      "id": 182
+    },
+    {
+      "refreshToken": null,
+      "id": 183
+    },
+    {
+      "refreshToken": null,
+      "id": 184
+    },
+    {
+      "refreshToken": null,
+      "id": 185
+    },
+    {
+      "refreshToken": null,
+      "id": 186
+    },
+    {
+      "refreshToken": null,
+      "id": 187
+    },
+    {
+      "refreshToken": null,
+      "id": 188
+    },
+    {
+      "refreshToken": null,
+      "id": 189
+    },
+    {
+      "refreshToken": null,
+      "id": 190
+    },
+    {
+      "refreshToken": null,
+      "id": 191
+    },
+    {
+      "refreshToken": null,
+      "id": 192
+    },
+    {
+      "refreshToken": null,
+      "id": 193
+    },
+    {
+      "refreshToken": null,
+      "id": 194
     }
   ],
   "cars": [
@@ -1602,7 +1687,7 @@
     {
       "id": 23,
       "carId": 23,
-      "userId": 23,
+      "userId": 4,
       "startDate": "2022-01-10",
       "endDate": "2021-04-08",
       "status": "IN ATTESA"
@@ -1664,12 +1749,10 @@
       "status": "IN ATTESA"
     },
     {
-      "id": 37,
       "carId": 37,
-      "userId": 37,
       "startDate": "2021-04-07",
       "endDate": "2021-08-25",
-      "status": "IN ATTESA"
+      "id": 37
     },
     {
       "id": 40,

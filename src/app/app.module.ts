@@ -21,6 +21,7 @@ import { ReservationPageComponent } from './page/reservation-page/reservation-pa
 import { CustomFormReservationsComponent } from './component/custom-form-reservations/custom-form-reservations.component';
 import {LoginPageComponent} from "./page/login-page/login-page.component";
 import {TokenInterceptor} from "./util/service/authentication/token-interceptor.service";
+import { ProfilePageComponent } from './page/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import {TokenInterceptor} from "./util/service/authentication/token-interceptor.
     ReservationPageComponent,
     CustomFormReservationsComponent,
     PageFormReservationsComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

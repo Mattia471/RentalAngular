@@ -13,7 +13,7 @@
     </div>
   </div>
   <hr>
-  <app-button-custom [btn]="config.actions[0]" (emitter)="btnClicked($event,'')"></app-button-custom>
+  <app-button-custom *ngIf="config.actions[0]" [btn]="config.actions[0]" (emitter)="btnClicked($event,'')"></app-button-custom>
   <hr>
 
 

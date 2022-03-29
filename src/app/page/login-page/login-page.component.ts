@@ -37,7 +37,11 @@ export class LoginPageComponent {
       .subscribe(success => {
         if (success) {
           console.log(success)
-          this.router.navigate(['/reservations']);
+          if(this.authService.getUser()!.role) {
+            this.router.navigate(['/users']); //admin
+          }else{
+            this.router.navigate(['/reservations']); //customer
+          }
         }
       });
   }

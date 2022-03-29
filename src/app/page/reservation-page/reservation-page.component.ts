@@ -3,7 +3,8 @@ import {ReservationsModel} from "../../util/model/reservations";
 import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
-import {CarsModel} from "../../util/model/cars";
+import {AuthService} from "../../util/service/authentication/auth.service";
+import {ReservationsConfigCustomer} from "../../util/configCustom/table/reservationsConfigCustomer";
 
 @Component({
   selector: 'app-reservation-page',
@@ -13,16 +14,24 @@ import {CarsModel} from "../../util/model/cars";
 export class ReservationPageComponent implements OnInit {
 
   reservations!: ReservationsModel[];
-  reservationsTable = ReservationsConfig;
+  reservationsTableAdmin = ReservationsConfig;
+  reservationsTableCustomer = ReservationsConfigCustomer;
 
   constructor(
     private reservationsService: ReservationsService,
     private router: Router,
     private route: ActivatedRoute,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.getReservations()
+
+
+    if(this.authService.getUser()?.role) {
+      this.getReservations()
+    }else{
+      this.getReservationsByCustomer()
+    }
   }
 
   btnClicked($event: any) {
@@ -43,6 +52,13 @@ export class ReservationPageComponent implements OnInit {
   //recuperp gli utenti dal servizio
   getReservations(): void {
     this.reservationsService.getReservations().subscribe(reservations => {
+      this.reservations = reservations
+    });
+  }
+
+  //recuperp gli utenti dal servizio
+  getReservationsByCustomer(): void {
+    this.reservationsService.getReservationByCustomer(this.authService.getUser()!.id).subscribe(reservations => {
       this.reservations = reservations
     });
   }

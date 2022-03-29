@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
-import {FormControl, FormGroup} from "@angular/forms";
-import {UsersModel} from "../../util/model/users";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
+import {AuthService} from "../../util/service/authentication/auth.service";
 
 @Component({
   selector: 'app-custom-form',
@@ -30,6 +29,7 @@ export class CustomFormComponent implements OnInit {
      public reservationsService : ReservationsService,
      public router: Router,
      public route: ActivatedRoute,
+     public authService: AuthService
   ) {
   }
 
@@ -57,15 +57,18 @@ export class CustomFormComponent implements OnInit {
     if (this.classes === 'users') {
       this.usersService.editUser(object, id)
         .subscribe(o => {
-
+          if(this.authService.getUser()?.role) {
+            this.router.navigate(['/' + this.classes], {relativeTo: this.route});
+          }else{
+            this.router.navigate(['/profile'], {relativeTo: this.route});
+          }
         });
     } else if (this.classes === 'cars') {
       this.carsService.editCar(object, id)
         .subscribe(o => {
-
+          this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });
     }
 
-    this.router.navigate(['/' + this.classes], {relativeTo: this.route});
   }
 }

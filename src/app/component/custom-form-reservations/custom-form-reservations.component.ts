@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
 import {CarsModel} from "../../util/model/cars";
 import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
-import {CarsConfig} from "../../util/configCustom/table/carsConfig";
+import {CarsConfigAdmin} from "../../util/configCustom/table/carsConfig";
 import {AuthService} from "../../util/service/authentication/auth.service";
 
 @Component({
@@ -30,7 +30,7 @@ export class CustomFormReservationsComponent implements OnInit {
 
 
   carAvailable!:CarsModel[];
-  carsTable = CarsConfig;
+  carsTable = CarsConfigAdmin;
 
   constructor(
      private usersService: UsersService,

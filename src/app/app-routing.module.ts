@@ -10,12 +10,11 @@ import {PageFormReservationsComponent} from "./page/page-form-reservations/page-
 import {LoginPageComponent} from "./page/login-page/login-page.component";
 import { UserGuard} from "./util/service/authentication/basic-guard.service";
 import {AdminGuard} from "./util/service/authentication/admin-guard.service";
+import {ProfilePageComponent} from "./page/profile-page/profile-page.component";
 
 const routes: Routes = [
   {
-    path : 'users',
-    canActivate: [AdminGuard], //route
-    canLoad: [AdminGuard], //figli
+    path : 'users', canActivate: [AdminGuard], //routecanLoad: [AdminGuard], //figli
     children:[
       {path : '', component: UserPageComponent},
       {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
@@ -23,8 +22,7 @@ const routes: Routes = [
     ]
   },
   {
-    path : 'cars',
-    canActivate: [UserGuard],
+    path : 'cars', canActivate: [UserGuard], canLoad: [AdminGuard],
     children:[
       {path : '', component: CarPageComponent},
       {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
@@ -32,9 +30,7 @@ const routes: Routes = [
     ]
   },
   {
-    path : 'reservations',
-    canActivate: [AdminGuard],
-    canLoad: [AdminGuard],
+    path : 'reservations', canActivate: [UserGuard], canLoad: [AdminGuard],
     children:[
       {path : '', component: ReservationPageComponent},
       {path : 'edit/:obj/:class', component: PageFormReservationsComponent}, //mandare a form
@@ -42,8 +38,13 @@ const routes: Routes = [
     ]
   },
   {
-    path : 'login',
-    canActivate: [UserGuard],
+    path : 'profile', canActivate: [UserGuard],
+    children:[
+      {path : '', component: ProfilePageComponent},
+    ]
+  },
+  {
+    path : 'login', canActivate: [UserGuard],
     children:[
       {path : '', component: LoginPageComponent},
     ]

@@ -5,10 +5,10 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" routerLink="/users">Utenti</a>
+          <a class="nav-link " aria-current="page" routerLink="/users" *ngIf="authService.getUser()?.role">Utenti</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " aria-current="page" routerLink="/reservations">Prenotazioni</a>
@@ -17,10 +17,10 @@
           <a class="nav-link  " aria-current="page" routerLink="/cars">Auto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " aria-current="page" routerLink="/users">Profilo</a>
+          <a class="nav-link  " aria-current="page" routerLink="/profile">Profilo</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  " aria-current="page" (click)="logout()">Logout</a>
+        <li>
+          <button class="btn btn-success my-2 my-sm-0" (click)="logout()">LOGOUT</button>
         </li>
       </ul>
     </div>

@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CarsService} from "../../util/service/cars/cars.service";
-import {CarsConfig} from "../../util/configCustom/table/carsConfig";
+import {CarsConfigAdmin} from "../../util/configCustom/table/carsConfig";
 import {CarsModel} from "../../util/model/cars";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UsersModel} from "../../util/model/users";
+import {AuthService} from "../../util/service/authentication/auth.service";
+import {CarsConfigCustomer} from "../../util/configCustom/table/carsConfigCustomer";
 @Component({
   selector: 'app-user-page',
   templateUrl: './car-page.component.html',
@@ -12,14 +13,15 @@ import {UsersModel} from "../../util/model/users";
 export class CarPageComponent implements OnInit {
 
   cars!: CarsModel[];
-  carsTable = CarsConfig;
-
+  carsTableAdmin = CarsConfigAdmin;
+  carsTableCustomer = CarsConfigCustomer;
 
 
   constructor(
      public carService: CarsService,
      public route : ActivatedRoute,
      public router: Router,
+     public authService: AuthService
   ) { }
 
   ngOnInit(): void {

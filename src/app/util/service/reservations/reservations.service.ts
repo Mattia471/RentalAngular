@@ -35,6 +35,16 @@ export class ReservationsService {
       );
   }
 
+  //recupera utenti da id
+  getReservationByCustomer(id:number): Observable<any> {
+    const url = `${this.reservationUrl}?userId=`+id;
+    return this.http.get<ReservationsModel[]>(url)
+      .pipe(
+        tap(_ => this.log('PRENOTAZIONI DELL\'UTENTE CON ID: ' +id)),
+        catchError(this.handleError<ReservationsModel>('getReservationByCustomer'))
+      );
+  }
+
   //delete
   deleteReservation(id:number): Observable<ReservationsModel> {
     const url = `${this.reservationUrl}/`+id;

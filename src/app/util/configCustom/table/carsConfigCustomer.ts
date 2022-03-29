@@ -1,8 +1,4 @@
 import {MyHeader, MyOrder, MyPagination, MySearch, MyTableConfig} from './config';
-import {AddButton} from "../button/addButton";
-import {EditButton} from "../button/editButton";
-import {DeleteButton} from "../button/deleteButton";
-
 
 
 //array heder
@@ -31,10 +27,10 @@ const Pagination: MyPagination =
     itemForPageOptions: [5,10,15,20]
   };
 
-export const CarsConfigAdmin: MyTableConfig = {
+export const CarsConfigCustomer: MyTableConfig = {
   order: Order,
   header: Header,
   search: Search,
   pagination: Pagination,
-  actions: [AddButton, EditButton,DeleteButton]
+  actions: []
 };
