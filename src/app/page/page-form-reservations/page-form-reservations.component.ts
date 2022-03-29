@@ -75,7 +75,6 @@ export class PageFormReservationsComponent implements OnInit {
           carId: new FormControl(''),
           startDate: new FormControl(''),
           endDate: new FormControl(''),
-          status: new FormControl('IN ATTESA'),
         })
 
         console.log(this.keyForm, this.typeOfData, this.form)

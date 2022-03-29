@@ -14,7 +14,8 @@
       "surname": "Poxton",
       "email": "prova1@gmail.com",
       "password": "1234",
-      "birthdate": "2021-06-22"
+      "birthdate": "2021-06-22",
+      "role": false
     },
     {
       "id": 5,
@@ -540,6 +541,214 @@
       "email": "prova@gmail.com",
       "password": "1234",
       "id": 124
+    },
+    {
+      "username": "fdfd",
+      "password": "fddf",
+      "id": 125
+    },
+    {
+      "username": "fdfd",
+      "password": "fdfd",
+      "id": 126
+    },
+    {
+      "username": "fdf",
+      "password": "df",
+      "id": 127
+    },
+    {
+      "username": "cxcx",
+      "password": "cxcx",
+      "id": 128
+    },
+    {
+      "username": "fd",
+      "password": "dfd",
+      "id": 129
+    },
+    {
+      "username": "rere",
+      "password": "fdfd",
+      "id": 130
+    },
+    {
+      "username": "grgr",
+      "password": "grrg",
+      "id": 131
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 132
+    },
+    {
+      "username": "gfgf",
+      "password": "gfgf",
+      "id": 133
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 134
+    },
+    {
+      "refreshToken": null,
+      "id": 135
+    },
+    {
+      "username": "fd",
+      "password": "fdfd",
+      "id": 136
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 137
+    },
+    {
+      "refreshToken": null,
+      "id": 138
+    },
+    {
+      "username": "prova1@gmail.com",
+      "password": "1234",
+      "id": 139
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 140
+    },
+    {
+      "username": "fdfd",
+      "password": "fdf",
+      "id": 141
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 142
+    },
+    {
+      "username": "fdfd",
+      "password": "fdfd",
+      "id": 143
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 144
+    },
+    {
+      "email": "fdfd",
+      "password": "fd",
+      "id": 145
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 146
+    },
+    {
+      "email": "fd",
+      "password": "fdfd",
+      "id": 147
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 148
+    },
+    {
+      "email": "ddd",
+      "password": "dd",
+      "id": 149
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 150
+    },
+    {
+      "email": "i",
+      "password": "u",
+      "id": 151
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 152
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 153
+    },
+    {
+      "refreshToken": "undefined",
+      "id": 154
+    },
+    {
+      "refreshToken": null,
+      "id": 155
+    },
+    {
+      "refreshToken": null,
+      "id": 156
+    },
+    {
+      "refreshToken": null,
+      "id": 157
+    },
+    {
+      "refreshToken": null,
+      "id": 158
+    },
+    {
+      "refreshToken": null,
+      "id": 159
+    },
+    {
+      "refreshToken": null,
+      "id": 160
+    },
+    {
+      "refreshToken": null,
+      "id": 161
+    },
+    {
+      "refreshToken": null,
+      "id": 162
+    },
+    {
+      "refreshToken": null,
+      "id": 163
+    },
+    {
+      "refreshToken": null,
+      "id": 164
+    },
+    {
+      "refreshToken": null,
+      "id": 165
+    },
+    {
+      "refreshToken": null,
+      "id": 166
+    },
+    {
+      "refreshToken": null,
+      "id": 167
+    },
+    {
+      "refreshToken": null,
+      "id": 168
+    },
+    {
+      "refreshToken": null,
+      "id": 169
+    },
+    {
+      "refreshToken": null,
+      "id": 170
+    },
+    {
+      "refreshToken": null,
+      "id": 171
+    },
+    {
+      "refreshToken": null,
+      "id": 172
     }
   ],
   "cars": [
@@ -1463,14 +1672,6 @@
       "status": "IN ATTESA"
     },
     {
-      "id": 39,
-      "carId": 39,
-      "userId": 39,
-      "startDate": "2021-04-17",
-      "endDate": "2021-12-31",
-      "status": "IN ATTESA"
-    },
-    {
       "id": 40,
       "carId": 40,
       "userId": 40,
@@ -1492,14 +1693,6 @@
       "userId": 42,
       "startDate": "2021-05-23",
       "endDate": "2022-02-16",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 43,
-      "carId": 43,
-      "userId": 43,
-      "startDate": "2021-04-01",
-      "endDate": "2021-10-05",
       "status": "IN ATTESA"
     },
     {
@@ -1768,17 +1961,53 @@
     },
     {
       "carId": 6,
-      "startDate": "2022-03-26",
-      "endDate": "2022-03-25",
-      "status": "",
-      "id": 101
-    },
-    {
-      "carId": 6,
       "startDate": "2023-04-20",
       "endDate": "2022-07-08",
       "status": "",
       "id": 102
+    },
+    {
+      "id": 103,
+      "carId": 6,
+      "startDate": "2022-03-08",
+      "endDate": "2022-03-26",
+      "status": "IN ATTESA"
+    },
+    {
+      "id": 104,
+      "carId": 6,
+      "startDate": "2023-12-31",
+      "endDate": "2024-12-31",
+      "status": "IN ATTESA"
+    },
+    {
+      "id": 106,
+      "carId": 7,
+      "startDate": "2030-12-31",
+      "endDate": "2031-12-31",
+      "status": "IN ATTESA"
+    },
+    {
+      "id": 107,
+      "carId": 6,
+      "startDate": "2022-03-30",
+      "endDate": "2022-03-31",
+      "status": "IN ATTESA"
+    },
+    {
+      "id": 108,
+      "carId": 6,
+      "startDate": "2022-03-30",
+      "endDate": "2022-03-31",
+      "status": "IN ATTESA"
+    },
+    {
+      "id": 109,
+      "carId": 7,
+      "userId": 4,
+      "startDate": "2060-12-31",
+      "endDate": "2061-12-31",
+      "status": "IN ATTESA"
     }
   ]
 }

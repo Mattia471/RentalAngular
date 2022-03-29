@@ -6,9 +6,9 @@
 <div class="main">
   <div class="col-md-6 col-sm-12">
     <div class="login-form">
-      <form  [formGroup]="form" autocomplete="off" (ngSubmit)="loginProcess()">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
-          <label>Username</label>
+          <label>Email</label>
           <input type="text" formControlName="email" class="form-control" placeholder="inserisci username" required>
         </div>
         <div class="form-group">

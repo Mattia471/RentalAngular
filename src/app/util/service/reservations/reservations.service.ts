@@ -45,8 +45,16 @@ export class ReservationsService {
       );
   }
 
-  addReservation(user: any[]): Observable<ReservationsModel> {
-    return this.http.post<ReservationsModel>(this.reservationUrl,user)
+  addReservation(object: any,user: UsersModel): Observable<ReservationsModel> {
+    const x = {
+      id: null,
+      carId: object.carId,
+      userId: user.id,
+      startDate: object.startDate,
+      endDate: object.endDate,
+      status: 'IN ATTESA'
+    }
+    return this.http.post<ReservationsModel>(this.reservationUrl,x)
       .pipe(
         tap(_ => this.log("PRENOTAZIONE EFFETTUATA")),
         catchError(this.handleError<ReservationsModel>(`addReservation`))

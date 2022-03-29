@@ -8,9 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableComponent } from './component/table/table.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { UsersService } from './util/service/users/users.service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserPageComponent } from './page/user-page/user-page.component';
@@ -22,6 +20,7 @@ import { PageFormReservationsComponent } from './page/page-form-reservations/pag
 import { ReservationPageComponent } from './page/reservation-page/reservation-page.component';
 import { CustomFormReservationsComponent } from './component/custom-form-reservations/custom-form-reservations.component';
 import {LoginPageComponent} from "./page/login-page/login-page.component";
+import {TokenInterceptor} from "./util/service/authentication/token-interceptor.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +48,12 @@ import {LoginPageComponent} from "./page/login-page/login-page.component";
     ReactiveFormsModule,
 
   ],
-  providers: [UsersService],//servizio
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+    }],//servizio
   bootstrap: [AppComponent]
 })
 export class AppModule { }

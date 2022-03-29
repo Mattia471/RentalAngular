@@ -8,6 +8,7 @@ import {ReservationsService} from "../../util/service/reservations/reservations.
 import {CarsModel} from "../../util/model/cars";
 import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
 import {CarsConfig} from "../../util/configCustom/table/carsConfig";
+import {AuthService} from "../../util/service/authentication/auth.service";
 
 @Component({
   selector: 'app-custom-form-reservations',
@@ -27,15 +28,17 @@ export class CustomFormReservationsComponent implements OnInit {
   @Input() form: any;
   @Input() carsAvailable: any;
 
+
   carAvailable!:CarsModel[];
   carsTable = CarsConfig;
 
   constructor(
-     public usersService: UsersService,
-     public carsService: CarsService,
-     public reservationsService : ReservationsService,
-     public router: Router,
-     public route: ActivatedRoute,
+     private usersService: UsersService,
+     private carsService: CarsService,
+     private reservationsService : ReservationsService,
+     private router: Router,
+     private route: ActivatedRoute,
+     private loginService: AuthService,
   ) {
   }
 
@@ -51,18 +54,19 @@ export class CustomFormReservationsComponent implements OnInit {
   }
 
   onSubmitPrenota(object: any[]) {
-    this.reservationsService.addReservation(object)
-      .subscribe(o => {
+    this.usersService.getUserByEmail(this.loginService.getUser()!.email).subscribe(user =>{
+      this.reservationsService.addReservation(object,user[0])
+        .subscribe(o => {
+          this.router.navigate(['/' + this.classes], {relativeTo: this.route});
+        });
+    })
 
-      });
-    this.router.navigate(['/' + this.classes], {relativeTo: this.route});
   }
 
   onSubmitEdit(object: any[], id: any) {
       this.reservationsService.editReservation(object, id)
         .subscribe(o => {
-
+          this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });
-    this.router.navigate(['/' + this.classes], {relativeTo: this.route});
   }
 }

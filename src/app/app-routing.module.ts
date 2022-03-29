@@ -8,10 +8,14 @@ import {PageFormComponent} from "./page/page-form/page-form.component";
 import {ReservationPageComponent} from "./page/reservation-page/reservation-page.component";
 import {PageFormReservationsComponent} from "./page/page-form-reservations/page-form-reservations.component";
 import {LoginPageComponent} from "./page/login-page/login-page.component";
+import { UserGuard} from "./util/service/authentication/basic-guard.service";
+import {AdminGuard} from "./util/service/authentication/admin-guard.service";
 
 const routes: Routes = [
   {
     path : 'users',
+    canActivate: [AdminGuard], //route
+    canLoad: [AdminGuard], //figli
     children:[
       {path : '', component: UserPageComponent},
       {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
@@ -20,6 +24,7 @@ const routes: Routes = [
   },
   {
     path : 'cars',
+    canActivate: [UserGuard],
     children:[
       {path : '', component: CarPageComponent},
       {path : 'edit/:obj/:class', component: PageFormComponent}, //mandare a form
@@ -28,6 +33,8 @@ const routes: Routes = [
   },
   {
     path : 'reservations',
+    canActivate: [AdminGuard],
+    canLoad: [AdminGuard],
     children:[
       {path : '', component: ReservationPageComponent},
       {path : 'edit/:obj/:class', component: PageFormReservationsComponent}, //mandare a form
@@ -36,6 +43,13 @@ const routes: Routes = [
   },
   {
     path : 'login',
+    canActivate: [UserGuard],
+    children:[
+      {path : '', component: LoginPageComponent},
+    ]
+  },
+  {
+    path : 'logout',
     children:[
       {path : '', component: LoginPageComponent},
     ]

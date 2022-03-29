@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UsersService} from "../../util/service/users/users.service";
+import {AuthService} from "../../util/service/authentication/auth.service";
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit{
+export class LoginPageComponent {
 
-  form!:FormGroup;
+  loginForm!: FormGroup;
 
-  constructor(public usersSerice: UsersService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.initForm()
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
   }
 
-  initForm(){
-    this.form = new FormGroup({
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: [''],
+      password: ['']
     });
   }
 
-  loginProcess(){
-    if(this.form.valid){
-      this.usersSerice.getUserByEmail(this.form.value.email).subscribe(result =>{
-        if(result.length>0){
-          alert("ciao");
-        }else{
-          console.log(result);
-          alert("Credenziali errate!");
-        }
-      })
-    }
+  get f() {
+    return this.loginForm.controls;
   }
 
-
+  login() {
+    this.authService.login(
+      {
+        email: this.f['email'].value,
+        password: this.f['password'].value
+      }
+    )
+      .subscribe(success => {
+        if (success) {
+          console.log(success)
+          this.router.navigate(['/reservations']);
+        }
+      });
+  }
 
 }

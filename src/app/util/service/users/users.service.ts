@@ -27,12 +27,22 @@ export class UsersService {
   }
 
   //recupera utenti da id
+  getUserByLogin(email:string,password:string): Observable<any> {
+    const url = `${this.userUrl}?email=`+email+'&password='+password;
+    return this.http.get<UsersModel[]>(url)
+      .pipe(
+        tap(_ => this.log('UTENTE Selezionato con email: ' +email)),
+        catchError(this.handleError<UsersModel>('getUserByLogin'))
+      );
+  }
+
+  //recupera utenti da id
   getUserByEmail(email:string): Observable<any> {
     const url = `${this.userUrl}?email=`+email;
     return this.http.get<UsersModel[]>(url)
       .pipe(
         tap(_ => this.log('UTENTE Selezionato con email: ' +email)),
-        catchError(this.handleError<UsersModel>('getUserById'))
+        catchError(this.handleError<UsersModel>('getUserByEmail'))
       );
   }
 
