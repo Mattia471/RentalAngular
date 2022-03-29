@@ -27,9 +27,6 @@
     </thead>
     <tbody>
     <tr class="" *ngFor="let user of dataDisplay | slice : currentPage: itemForPage ">
-      <td *ngFor="let buttonR of config.actionsReservations" >
-        <app-button-custom [btn]="buttonR" (emitter)="btnClicked(buttonR.action,user)" *ngIf="user.status=='IN ATTESA'"></app-button-custom>
-      </td>
       <td *ngFor="let head of config.header">
         <span class="text-black">{{user[head.key]}}</span>
       </td>
@@ -37,6 +34,9 @@
         <ng-container *ngIf="button.action != 'add'"> <!--MOSTRA SOLO I TASTI MODIFICA E CANCELLA-->
             <app-button-custom [btn]="button" (emitter)="btnClicked(button.action,user)"></app-button-custom>
         </ng-container>
+      </td>
+      <td *ngFor="let buttonR of config.actionsReservations" >
+        <app-button-custom [btn]="buttonR" (emitter)="btnClicked(buttonR.action,user)" *ngIf="user.status=='IN ATTESA'"></app-button-custom>
       </td>
     </tr>
     </tbody>

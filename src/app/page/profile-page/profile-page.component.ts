@@ -65,7 +65,6 @@ export class ProfilePageComponent implements OnInit {
         birthdate: new FormControl(users.birthdate)
       })
 
-      console.log(this.keyForm, this.typeOfData, this.form)
     });
   }
 }

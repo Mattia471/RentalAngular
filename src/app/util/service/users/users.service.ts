@@ -75,7 +75,6 @@ export class UsersService {
   }
 
   editUser(user: any[],id:number): Observable<UsersModel> {
-    //TODO IMPOSTARE OGGETTO USER
     const url = `${this.userUrl}/`+id;
     return this.http.put<UsersModel>(url,user)
       .pipe(

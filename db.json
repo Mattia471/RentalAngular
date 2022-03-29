@@ -1,27 +1,19 @@
 {
   "users": [
     {
-      "name": "Glyn",
-      "surname": "Ruppeliu",
-      "email": "admin",
-      "birthdate": "2021-08-17",
-      "id": 3,
-      "role": true
-    },
-    {
-      "name": "Sullivan",
+      "name": "Sullivanlkfdfd",
       "surname": "Poxtons",
       "email": "customer",
       "birthdate": "2021-06-22",
-      "id": 4,
-      "role": false
+      "id": 4
     },
     {
       "id": 5,
       "name": "Ottilie",
       "surname": "Lloyd",
-      "email": "olloyd4@symantec.com",
-      "birthdate": "2021-06-05"
+      "email": "admin",
+      "birthdate": "2021-06-05",
+      "role": true
     },
     {
       "id": 6,
@@ -414,13 +406,6 @@
       "surname": "Killshaw",
       "email": "kkillshaw2r@go.com",
       "birthdate": "2021-10-18"
-    },
-    {
-      "name": "Glyn",
-      "surname": "Ruppeli",
-      "email": "gruppeli2@illinois.edu",
-      "birthdate": "2021-08-17",
-      "id": 101
     },
     {
       "name": "gfgf",
@@ -948,6 +933,26 @@
     {
       "refreshToken": null,
       "id": 222
+    },
+    {
+      "refreshToken": null,
+      "id": 223
+    },
+    {
+      "refreshToken": null,
+      "id": 224
+    },
+    {
+      "refreshToken": null,
+      "id": 225
+    },
+    {
+      "refreshToken": null,
+      "id": 226
+    },
+    {
+      "refreshToken": null,
+      "id": 227
     }
   ],
   "cars": [
@@ -2176,7 +2181,7 @@
       "carId": 7,
       "startDate": "2030-12-31",
       "endDate": "2031-12-31",
-      "status": "IN ATTESA"
+      "status": "RIFIUTATA"
     },
     {
       "id": 107,
@@ -2193,78 +2198,6 @@
       "status": "IN ATTESA"
     },
     {
-      "id": 110,
-      "carId": 6,
-      "userId": 3,
-      "startDate": "2021-04-30",
-      "endDate": "2021-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 111,
-      "carId": 7,
-      "userId": 3,
-      "startDate": "2021-04-30",
-      "endDate": "2021-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 112,
-      "carId": 9,
-      "userId": 3,
-      "startDate": "2021-04-30",
-      "endDate": "2021-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 113,
-      "carId": 10,
-      "userId": 3,
-      "startDate": "2021-04-30",
-      "endDate": "2021-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 114,
-      "carId": 6,
-      "userId": 3,
-      "startDate": "2021-04-29",
-      "endDate": "2021-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 115,
-      "carId": 8,
-      "userId": 3,
-      "startDate": "2060-04-29",
-      "endDate": "2065-07-28",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 116,
-      "carId": 7,
-      "userId": 3,
-      "startDate": "2021-04-29",
-      "endDate": "2021-07-29",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 117,
-      "carId": 6,
-      "userId": 3,
-      "startDate": "2021-04-29",
-      "endDate": "2021-07-29",
-      "status": "IN ATTESA"
-    },
-    {
-      "id": 118,
-      "carId": 8,
-      "userId": 3,
-      "startDate": "2021-04-29",
-      "endDate": "2021-08-01",
-      "status": "IN ATTESA"
-    },
-    {
       "carId": 7,
       "startDate": "2022-01-10",
       "endDate": "2021-04-10",
@@ -2275,6 +2208,14 @@
       "startDate": "2022-01-10",
       "endDate": "2021-04-18",
       "id": 120
+    },
+    {
+      "id": 121,
+      "carId": 6,
+      "userId": 4,
+      "startDate": "2022-03-01",
+      "endDate": "2022-03-31",
+      "status": "IN ATTESA"
     }
   ]
 }
