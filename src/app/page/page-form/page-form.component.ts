@@ -2,13 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
-import * as moment from "moment";
 import {FormControl, FormGroup} from "@angular/forms";
 import {FormConfig} from "../../util/configCustom/form/config";
 import {UsersFormConfig} from "../../util/configCustom/form/usersConfig";
 import {CarsFormConfig} from "../../util/configCustom/form/carsConfig";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
-import {ReservationsFormConfig} from "../../util/configCustom/form/reservationsConfig";
 
 
 @Component({
@@ -28,13 +26,12 @@ export class PageFormComponent implements OnInit {
 
   usersPattern: FormConfig = UsersFormConfig;
   carsPattern: FormConfig = CarsFormConfig;
-  reservationsPattern: FormConfig = ReservationsFormConfig;
 
   constructor(
-     public route: ActivatedRoute,
-     public usersService: UsersService,
-     public carsService: CarsService,
-     public reservationsService : ReservationsService
+    public route: ActivatedRoute,
+    public usersService: UsersService,
+    public carsService: CarsService,
+    public reservationsService: ReservationsService
   ) {
   }
 
@@ -48,8 +45,6 @@ export class PageFormComponent implements OnInit {
       this.getStructureAdd()
     }
 
-    console.log(this.classItems)
-    console.log(this.itemContent)
 
   }
 
@@ -62,8 +57,6 @@ export class PageFormComponent implements OnInit {
   }
 
 
-
-
   getStructureAdd(): void {
     switch (this.classItems) {
       case 'users':
@@ -74,13 +67,15 @@ export class PageFormComponent implements OnInit {
         }
 
         this.form = new FormGroup({
+          id: new FormControl(''),
           name: new FormControl(''),
           surname: new FormControl(''),
+          password: new FormControl(''),
           email: new FormControl(''),
-          birthdate: new FormControl('')
+          birthdate: new FormControl(''),
+          role: new FormControl('CUSTOMER'),
         })
 
-        console.log(this.keyForm, this.typeOfData, this.form)
         break;
 
       case 'cars':
@@ -91,14 +86,14 @@ export class PageFormComponent implements OnInit {
         }
 
         this.form = new FormGroup({
-          licenseplate: new FormControl(''),
+          id: new FormControl(''),
+          licensePlate: new FormControl(''),
           manufacturer: new FormControl(''),
           model: new FormControl(''),
           type: new FormControl(''),
           year: new FormControl('')
         })
 
-        console.log(this.keyForm, this.typeOfData, this.form)
         break
     }
 
@@ -117,13 +112,15 @@ export class PageFormComponent implements OnInit {
           }
 
           this.form = new FormGroup({
+            id: new FormControl(users.id),
             name: new FormControl(users.name),
             surname: new FormControl(users.surname),
+            password: new FormControl(''),
             email: new FormControl(users.email),
-            birthdate: new FormControl(users.birthdate)
+            birthdate: new FormControl(users.birthdate),
+            role: new FormControl(users.role),
           })
 
-          console.log(this.keyForm, this.typeOfData, this.form)
         });
         break;
 
@@ -136,14 +133,14 @@ export class PageFormComponent implements OnInit {
           }
 
           this.form = new FormGroup({
-            licenseplate: new FormControl(cars.licenseplate),
+            id: new FormControl(cars.id),
+            licensePlate: new FormControl(cars.licensePlate),
             manufacturer: new FormControl(cars.manufacturer),
             model: new FormControl(cars.model),
             type: new FormControl(cars.type),
             year: new FormControl(cars.year)
           })
 
-          console.log(this.keyForm, this.typeOfData, this.form, this.data)
         });
         break
     }

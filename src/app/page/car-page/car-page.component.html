@@ -1,12 +1,12 @@
 <ng-container *ngIf="cars !== undefined">
 
-  <app-table *ngIf="authService.getUser()?.role"
+  <app-table *ngIf="auth.getUser()!.role == 'ADMIN'"
              [config]="carsTableAdmin"
              [data]="cars"
              (btnEventEmit)="btnClicked($event)">
   </app-table>
 
-  <app-table *ngIf="!authService.getUser()?.role"
+  <app-table *ngIf="auth.getUser()!.role == 'CUSTOMER'"
              [config]="carsTableCustomer"
              [data]="cars"
              (btnEventEmit)="btnClicked($event)">

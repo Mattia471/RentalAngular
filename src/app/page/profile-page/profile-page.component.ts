@@ -2,13 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {FormConfig} from "../../util/configCustom/form/config";
 import {UsersFormConfig} from "../../util/configCustom/form/usersConfig";
 import {CarsFormConfig} from "../../util/configCustom/form/carsConfig";
-import {ReservationsFormConfig} from "../../util/configCustom/form/reservationsConfig";
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {AuthService} from "../../util/service/authentication/auth.service";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
 
 @Component({
   selector: 'app-profile-page',
@@ -27,26 +26,24 @@ export class ProfilePageComponent implements OnInit {
 
   usersPattern: FormConfig = UsersFormConfig;
   carsPattern: FormConfig = CarsFormConfig;
-  reservationsPattern: FormConfig = ReservationsFormConfig;
 
   constructor(
     public route: ActivatedRoute,
     public usersService: UsersService,
     public carsService: CarsService,
     public reservationsService: ReservationsService,
-    private authService: AuthService,
+    private auth: TokenStorageServiceService,
   ) {
   }
 
   ngOnInit(): void {
     this.getItem()
     this.getStructureEdit()
-    console.log(this.itemContent)
   }
 
 
   getItem(): void {
-    this.itemContent = this.authService.getUser()?.id
+    this.itemContent = this.auth.getUser()?.id
   }
 
 
@@ -59,12 +56,17 @@ export class ProfilePageComponent implements OnInit {
       }
 
       this.form = new FormGroup({
+        id: new FormControl(users.id),
         name: new FormControl(users.name),
         surname: new FormControl(users.surname),
         email: new FormControl(users.email),
-        birthdate: new FormControl(users.birthdate)
+        birthdate: new FormControl(users.birthdate),
+        password: new FormControl(''),
+        role: new FormControl(users.role)
       })
 
     });
   }
+
+
 }

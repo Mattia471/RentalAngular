@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of, tap} from "rxjs";
-import {UsersModel} from "../../model/users";
+import {Observable, tap} from "rxjs";
 import {MyTableConfig} from "../../configCustom/table/config";
 import {ReservationsModel} from "../../model/reservations";
 
@@ -10,7 +9,7 @@ import {ReservationsModel} from "../../model/reservations";
 })
 export class ReservationsService {
 
-  private reservationUrl = 'http://localhost:3000/reservations';
+  private reservationUrl = 'http://localhost:8080/api/reservations';
   tableConfig !: MyTableConfig;
 
   constructor(private http: HttpClient) {
@@ -19,121 +18,101 @@ export class ReservationsService {
   //recupera lista intera
   getReservations(): Observable<ReservationsModel[]> {
     return this.http.get<ReservationsModel[]>(this.reservationUrl).pipe(
-      tap(_ => this.log('UTENTI GENERATI')),
-      catchError(this.handleError<ReservationsModel[]>('getUsers', []))
+      tap(_ => this.log('PRENOTAZIONI GENERATE')),
     );
   }
 
   //recupera utenti da id
   getReservationById(id: number): Observable<any> {
-    const url = `${this.reservationUrl}/` + id;
+    const url = `${this.reservationUrl}/id/` + id;
     return this.http.get<ReservationsModel[]>(url)
       .pipe(
         tap(_ => this.log('PRENOTAZIONE CON ID: ' + id)),
-        catchError(this.handleError<ReservationsModel>('getReservationById'))
       );
   }
 
   //recupera utenti da id
   getReservationByCustomer(id: number): Observable<any> {
-    const url = `${this.reservationUrl}?userId=` + id;
+    const url = `${this.reservationUrl}/user/` + id;
     return this.http.get<ReservationsModel[]>(url)
       .pipe(
         tap(_ => this.log('PRENOTAZIONI DELL\'UTENTE CON ID: ' + id)),
-        catchError(this.handleError<ReservationsModel>('getReservationByCustomer'))
       );
   }
 
   //delete
   deleteReservation(id: number): Observable<ReservationsModel> {
-    const url = `${this.reservationUrl}/` + id;
+    const url = `${this.reservationUrl}/delete/` + id;
     return this.http.delete<ReservationsModel>(url)
       .pipe(
         tap(_ => this.log(`PRENOTAZIONE CON ID:` + id + ' ELIMINATO')),
-        catchError(this.handleError<ReservationsModel>(`deleteReservation`))
       );
   }
 
-  addReservation(object: any, user: UsersModel): Observable<ReservationsModel> {
+  addReservation(object: any, userId: number): Observable<ReservationsModel> {
     const objectUser = {
       id: null,
       carId: object.carId,
-      userId: user.id,
+      userId: userId,
       startDate: object.startDate,
       endDate: object.endDate,
       status: 'IN ATTESA'
     }
-    return this.http.post<ReservationsModel>(this.reservationUrl, objectUser)
+    const url = `${this.reservationUrl}/add`;
+    return this.http.post<ReservationsModel>(url, objectUser)
       .pipe(
         tap(_ => this.log("PRENOTAZIONE EFFETTUATA")),
-        catchError(this.handleError<ReservationsModel>(`addReservation`))
       );
   }
 
-  editReservation(reservation: ReservationsModel,id:number,user: UsersModel): Observable<ReservationsModel> {
+  editReservation(reservation: any, userId: number): Observable<ReservationsModel> {
     const objectUser = {
-      id: id,
-      userId: user.id,
+      id: reservation.id,
       carId: reservation.carId,
+      userId: userId,
       startDate: reservation.startDate,
       endDate: reservation.endDate,
       status: 'IN ATTESA'
     }
-    console.log(objectUser)
-    const url = `${this.reservationUrl}/` + id;
+    const url = `${this.reservationUrl}/edit`;
     return this.http.put<ReservationsModel>(url, objectUser)
       .pipe(
         tap(_ => this.log("PRENOTAZIONE MODIFICATA ")),
-        catchError(this.handleError<ReservationsModel>(`editReservation`))
       );
   }
 
   acceptReservation(reservation: ReservationsModel): Observable<ReservationsModel> {
     const objectReservation = {
       id: reservation.id,
-      userId: reservation.userId,
-      carId: reservation.carId,
+      carId: reservation.idCar,
+      userId: reservation.idUser,
       startDate: reservation.startDate,
       endDate: reservation.endDate,
       status: 'CONFERMATA',
     }
-    const url = `${this.reservationUrl}/` + reservation.id;
+    const url = `${this.reservationUrl}/accept`;
     return this.http.put<ReservationsModel>(url, objectReservation)
       .pipe(
         tap(_ => this.log("PRENOTAZIONE CONFERMATA")),
-        catchError(this.handleError<ReservationsModel>(`editReservation`))
       );
   }
 
   declineReservation(reservation: ReservationsModel): Observable<ReservationsModel> {
     const objectReservation = {
       id: reservation.id,
-      userId: reservation.userId,
-      carId: reservation.carId,
+      carId: reservation.idCar,
+      userId: reservation.idUser,
       startDate: reservation.startDate,
       endDate: reservation.endDate,
       status: 'RIFIUTATA',
     }
-    const url = `${this.reservationUrl}/` + reservation.id;
+    const url = `${this.reservationUrl}/decline`;
     return this.http.put<ReservationsModel>(url, objectReservation)
       .pipe(
         tap(_ => this.log("PRENOTAZIONE RIFIUTA")),
-        catchError(this.handleError<ReservationsModel>(`editReservation`))
       );
   }
 
-
-//stampa i messaggi di errore in console
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
 
   private log(methodLog: string) {
     console.log(methodLog)

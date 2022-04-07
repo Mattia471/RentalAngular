@@ -7,8 +7,8 @@ import {DeclineButton} from "../button/declineButton";
 
 //array heder
 const Header: MyHeader[] = [
-  {key: 'userId',label:'Utente'},
-  {key: 'carId',label:'Auto'},
+  {key: 'idUser',label:'Utente'},
+  {key: 'idCar',label:'Auto'},
   {key: 'startDate',label:'Inizio Noleggio'},
   {key: 'endDate',label:'Fine noleggio'},
   {key: 'status',label:'Stato Prenotazione'},
@@ -22,7 +22,7 @@ const Order: MyOrder =
 
 const Search: MySearch =
   {
-    columns: ['userId', 'carId', 'startDate', 'endDate','status']
+    columns: ['idUser', 'idCar', 'startDate', 'endDate','status']
   };
 
 const Pagination: MyPagination =

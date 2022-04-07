@@ -6,16 +6,18 @@
 <div class="main">
   <div class="col-md-6 col-sm-12">
     <div class="login-form">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" formControlName="email" class="form-control" placeholder="inserisci username" required>
+      <div class="alert-danger text-uppercase text-center">{{errorMsg}}</div>
+      <form autocomplete="off">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input #username type="text" class="form-control" id="email">
         </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" formControlName="password" class="form-control" placeholder="inserisci password" required>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input #password type="password" class="form-control" id="password">
         </div>
-        <button type="submit" class="btn btn-success">Accedi</button>
+
+        <button (click)="login(username.value, password.value)" class="btn btn-success">Login</button>
       </form>
     </div>
   </div>

@@ -1,15 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
-import {FormControl, FormGroup} from "@angular/forms";
-import {UsersModel} from "../../util/model/users";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
 import {CarsModel} from "../../util/model/cars";
-import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
 import {CarsConfigAdmin} from "../../util/configCustom/table/carsConfig";
 import {AuthService} from "../../util/service/authentication/auth.service";
 import {ReservationsModel} from "../../util/model/reservations";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
 
 @Component({
   selector: 'app-custom-form-reservations',
@@ -40,6 +38,7 @@ export class CustomFormReservationsComponent implements OnInit {
      private router: Router,
      private route: ActivatedRoute,
      private loginService: AuthService,
+     private auth : TokenStorageServiceService
   ) {
   }
 
@@ -47,29 +46,26 @@ export class CustomFormReservationsComponent implements OnInit {
 
   }
 
-  onSubmitSearch(object: any[]) {
-      this.carsService.getCars()
+  onSubmitSearch(startD: Date,endD:Date) {
+      this.carsService.getCarsAvailable(startD,endD)
         .subscribe(cars => {
           this.carAvailable=cars
         });
   }
 
   onSubmitPrenota(object: any[]) {
-    this.usersService.getUserByEmail(this.loginService.getUser()!.email).subscribe(user =>{
-      this.reservationsService.addReservation(object,user[0])
+      this.reservationsService.addReservation(object,this.auth.getUser().id)
         .subscribe(o => {
           this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });
-    })
+
 
   }
 
-  onSubmitEdit(object: ReservationsModel,id:number) {
-    this.usersService.getUserByEmail(this.loginService.getUser()!.email).subscribe(user =>{
-      this.reservationsService.editReservation(object,id,user[0])
+  onSubmitEdit(object: any[]) {
+      this.reservationsService.editReservation(object,this.auth.getUser().id)
         .subscribe(o => {
           this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });
-    })
   }
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ReservationsModel} from "../../util/model/reservations";
 import {ReservationsConfig} from "../../util/configCustom/table/reservationsConfig";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationsService} from "../../util/service/reservations/reservations.service";
 import {AuthService} from "../../util/service/authentication/auth.service";
 import {ReservationsConfigCustomer} from "../../util/configCustom/table/reservationsConfigCustomer";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
 
 @Component({
   selector: 'app-reservation-page',
@@ -21,15 +22,14 @@ export class ReservationPageComponent implements OnInit {
     private reservationsService: ReservationsService,
     private router: Router,
     private route: ActivatedRoute,
-    public authService: AuthService
-  ) {}
+    public auth: TokenStorageServiceService
+  ) {
+  }
 
   ngOnInit(): void {
-
-
-    if(this.authService.getUser()!.role) {
+    if (sessionStorage.getItem('role') === 'ADMIN') {
       this.getReservations()
-    }else{
+    } else {
       this.getReservationsByCustomer()
     }
   }
@@ -37,13 +37,13 @@ export class ReservationPageComponent implements OnInit {
   btnClicked($event: any) {
     switch ($event.action) {
       case 'add':
-        this.router.navigate(['add/'  + 'reservations'], {relativeTo: this.route});
+        this.router.navigate(['add/' + 'reservations'], {relativeTo: this.route});
         break;
       case 'accept':
         this.accept($event.item);
         break;
       case 'edit':
-        this.router.navigate(['edit/' + $event.item.id+ '/' + 'reservations'], {relativeTo: this.route});
+        this.router.navigate(['edit/' + $event.item.id + '/' + 'reservations'], {relativeTo: this.route});
         break;
       case 'decline':
         this.decline($event.item);
@@ -64,7 +64,7 @@ export class ReservationPageComponent implements OnInit {
 
   //recuperp gli utenti dal servizio
   getReservationsByCustomer(): void {
-    this.reservationsService.getReservationByCustomer(this.authService.getUser()!.id).subscribe(reservations => {
+    this.reservationsService.getReservationByCustomer(this.auth.getUser().id).subscribe(reservations => {
       this.reservations = reservations
     });
   }

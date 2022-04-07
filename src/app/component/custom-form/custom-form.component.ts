@@ -55,16 +55,16 @@ export class CustomFormComponent implements OnInit {
 
   onSubmitEdit(object: any[], id: any) {
     if (this.classes === 'users') {
-      this.usersService.editUser(object, id)
+      this.usersService.editUser(object)
         .subscribe(o => {
-          if(this.authService.getUser()?.role) {
+          /*if(this.authService.getUser()?.role) {
             this.router.navigate(['/' + this.classes], {relativeTo: this.route});
           }else{
             this.router.navigate(['/profile'], {relativeTo: this.route});
-          }
+          }*/
         });
     } else if (this.classes === 'cars') {
-      this.carsService.editCar(object, id)
+      this.carsService.editCar(object)
         .subscribe(o => {
           this.router.navigate(['/' + this.classes], {relativeTo: this.route});
         });

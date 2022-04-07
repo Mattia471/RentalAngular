@@ -1,14 +1,14 @@
 <ng-container *ngIf="reservations !== undefined ">
 
   <!--admin-->
-  <app-table *ngIf="authService.getUser()?.role"
+  <app-table *ngIf="auth.getUser()!.role == 'ADMIN'"
     [config]="reservationsTableAdmin"
     [data]="reservations"
     (btnEventEmit)="btnClicked($event)">
   </app-table>
 
   <!--customer-->
-  <app-table *ngIf="!authService.getUser()?.role"
+  <app-table *ngIf="auth.getUser()!.role == 'CUSTOMER'"
              [config]="reservationsTableCustomer"
              [data]="reservations"
              (btnEventEmit)="btnClicked($event)">

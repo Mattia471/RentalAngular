@@ -1,6 +1,6 @@
 export interface CarsModel {
   id: number;
-  licenseplate: string;
+  licensePlate: string;
   manufacturer: string;
   model: string;
   type: string;

@@ -3,6 +3,7 @@ import {MyTableConfig} from "../../util/configCustom/table/config";
 import {MyButtonConfig} from "../../util/configCustom/button/config";
 import {AuthService} from "../../util/service/authentication/auth.service";
 import {Router} from "@angular/router";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
 
 @Component({
   selector: 'app-header',
@@ -11,20 +12,15 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService, private  router:Router) { }
+  constructor(public authService: AuthService, private  router:Router, public tokenStorage: TokenStorageServiceService) { }
 
   ngOnInit(): void {
 
   }
 
   logout() {
-    this.authService.logout()
-      .subscribe(success => {
-        if (success) {
-          console.log(success)
-          this.router.navigate(['/logout']);
-        }
-      });
+    this.tokenStorage.logout();
+    this.router.navigate(['/login']);
   }
 
 }

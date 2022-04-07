@@ -5,6 +5,7 @@ import {CarsModel} from "../../util/model/cars";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../util/service/authentication/auth.service";
 import {CarsConfigCustomer} from "../../util/configCustom/table/carsConfigCustomer";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
 @Component({
   selector: 'app-user-page',
   templateUrl: './car-page.component.html',
@@ -21,7 +22,7 @@ export class CarPageComponent implements OnInit {
      public carService: CarsService,
      public route : ActivatedRoute,
      public router: Router,
-     public authService: AuthService
+     public auth: TokenStorageServiceService
   ) { }
 
   ngOnInit(): void {

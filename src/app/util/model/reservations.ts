@@ -1,7 +1,7 @@
 export interface ReservationsModel {
   id: number;
-  userId: number;
-  carId: number;
+  idCar: number;
+  idUser: number;
   startDate: string;
   endDate: string;
   status: string;

@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {UsersService} from "../../util/service/users/users.service";
+import {Component} from '@angular/core';
 import {AuthService} from "../../util/service/authentication/auth.service";
+import {TokenStorageServiceService} from "../../util/service/authentication/token-storage-service.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -11,39 +10,50 @@ import {AuthService} from "../../util/service/authentication/auth.service";
 })
 export class LoginPageComponent {
 
-  loginForm!: FormGroup;
+  loginFailed = false;
+  errorMsg = '';
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private tokenStorage: TokenStorageServiceService) {
   }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: ['']
-    });
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.redirect()
+    }
   }
 
-  get f() {
-    return this.loginForm.controls;
-  }
+  login(email: string, password: string): void {
+    this.authService.login(email, password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.access_token);
+        this.tokenStorage.saveUser(data);
 
-  login() {
-    this.authService.login(
-      {
-        email: this.f['email'].value,
-        password: this.f['password'].value
-      }
-    )
-      .subscribe(success => {
-        if (success) {
-          console.log(success)
-          if(this.authService.getUser()!.role) {
-            this.router.navigate(['/users']); //admin
-          }else{
-            this.router.navigate(['/reservations']); //customer
-          }
+        this.loginFailed = false;
+        this.redirect();
+      },
+      err => {
+        if (email.length == 0 || password.length == 0) {
+          this.errorMsg = "inserisci tutti i campi";
+        } else {
+          this.errorMsg = "credenziali errate";
         }
-      });
+        this.loginFailed = true;
+      }
+    );
+  }
+
+  redirect(): void {
+    sessionStorage.setItem('role', this.tokenStorage.getUser().role);
+    sessionStorage.setItem('id', this.tokenStorage.getUser().id);
+    if (sessionStorage.getItem('role') === 'ADMIN') {
+      this.router.navigate(['/users']);
+    } else {
+      this.router.navigate(['/reservations']);
+    }
   }
 
 }

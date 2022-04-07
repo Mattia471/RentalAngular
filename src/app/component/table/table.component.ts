@@ -121,7 +121,6 @@ export class TableComponent implements OnInit {
     this.itemForPage = newItemForPage;
     this.getNumberOfPages()
     this.setCurrentPage(0)
-    //console.log("numero elementi: " + this.itemForPage)
   }
 
   getNumberOfPages(): void {

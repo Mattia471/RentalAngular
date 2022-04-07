@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../../util/service/users/users.service";
 import {CarsService} from "../../util/service/cars/cars.service";
-import * as moment from "moment";
 import {FormControl, FormGroup} from "@angular/forms";
 import {FormConfig} from "../../util/configCustom/form/config";
 import {UsersFormConfig} from "../../util/configCustom/form/usersConfig";
@@ -27,7 +26,6 @@ export class PageFormReservationsComponent implements OnInit {
   carsAvailable: any = [];
 
 
-  usersPattern: FormConfig = UsersFormConfig;
   carsPattern: FormConfig = CarsFormConfig;
   reservationsPattern: FormConfig = ReservationsFormConfig;
 
@@ -48,9 +46,6 @@ export class PageFormReservationsComponent implements OnInit {
     } else {
       this.getStructureAdd()
     }
-
-    console.log(this.classItems)
-    console.log(this.itemContent)
 
   }
 
@@ -76,8 +71,8 @@ export class PageFormReservationsComponent implements OnInit {
           startDate: new FormControl(''),
           endDate: new FormControl(''),
         })
+    console.log(this.form)
 
-        console.log(this.keyForm, this.typeOfData, this.form)
   }
 
 
@@ -90,12 +85,12 @@ export class PageFormReservationsComponent implements OnInit {
           }
 
           this.form = new FormGroup({
+            id: new FormControl(reservations.id),
             carId: new FormControl(reservations.carId),
             startDate: new FormControl(reservations.startDate),
             endDate: new FormControl(reservations.endDate),
           })
 
-          console.log(this.keyForm, this.typeOfData, this.form)
         });
   }
 

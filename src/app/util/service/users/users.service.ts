@@ -1,7 +1,7 @@
-import {Injectable, Input} from '@angular/core';
-import { MyTableConfig} from "../../configCustom/table/config";
-import {catchError, Observable, of, tap} from "rxjs";
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {MyTableConfig} from "../../configCustom/table/config";
+import {Observable, tap} from "rxjs";
+import {HttpClient} from '@angular/common/http';
 import {UsersModel} from "../../model/users";
 
 
@@ -11,90 +11,52 @@ import {UsersModel} from "../../model/users";
 })
 export class UsersService {
 
-  private userUrl = 'http://localhost:3000/users';
+  private userUrl = 'http://localhost:8080/api/users';
   tableConfig !: MyTableConfig;
 
-  constructor(private http: HttpClient)
-  {
+  constructor(private http: HttpClient) {
   }
 
   //recupera lista intera
   getUsers(): Observable<UsersModel[]> {
     return this.http.get<UsersModel[]>(this.userUrl).pipe(
-      tap(_ => this.log('UTENTI GENERATI')),
-      catchError(this.handleError<UsersModel[]>('getUsers', []))
+      tap(_ => this.log('UTENTI GENERATI'))
     );
   }
 
-  //recupera utenti da id
-  getUserByLogin(email:string,password:string): Observable<any> {
-    const url = `${this.userUrl}?email=`+email+'&password='+password;
-    return this.http.get<UsersModel[]>(url)
-      .pipe(
-        tap(_ => this.log('UTENTE Selezionato con email: ' +email)),
-        catchError(this.handleError<UsersModel>('getUserByLogin'))
-      );
-  }
 
   //recupera utenti da id
-  getUserByEmail(email:string): Observable<any> {
-    const url = `${this.userUrl}?email=`+email;
+  getUserById(id: number): Observable<any> {
+    const url = `${this.userUrl}/user/` + id;
     return this.http.get<UsersModel[]>(url)
       .pipe(
-        tap(_ => this.log('UTENTE Selezionato con email: ' +email)),
-        catchError(this.handleError<UsersModel>('getUserByEmail'))
+        tap(_ => this.log('UTENTE Selezionato con id: ' + id)),
       );
-  }
-
-  //recupera utenti da id
-  getUserById(id:number): Observable<any> {
-    const url = `${this.userUrl}/`+id;
-    return this.http.get<UsersModel[]>(url)
-      .pipe(
-      tap(_ => this.log('UTENTE Selezionato con id: ' +id)),
-      catchError(this.handleError<UsersModel>('getUserById'))
-    );
   }
 
   //delete
-  deleteUser(id:number): Observable<UsersModel> {
-    const url = `${this.userUrl}/`+id;
+  deleteUser(id: number): Observable<UsersModel> {
+    const url = `${this.userUrl}/delete/` + id;
     return this.http.delete<UsersModel>(url)
       .pipe(
-        tap(_ => this.log(`UTENTE Eliminato con id: `+ id)),
-        catchError(this.handleError<UsersModel>(`deleteUser`))
+        tap(_ => this.log(`UTENTE Eliminato con id: ` + id)),
       );
   }
 
   addUser(user: any[]): Observable<UsersModel> {
-    return this.http.post<UsersModel>(this.userUrl,user)
+    const url = `${this.userUrl}/add`;
+    return this.http.post<UsersModel>(url, user)
       .pipe(
         tap(_ => this.log("Aggiunto nuovo utente")),
-        catchError(this.handleError<UsersModel>(`addUser`))
       );
   }
 
-  editUser(user: any[],id:number): Observable<UsersModel> {
-    const url = `${this.userUrl}/`+id;
-    return this.http.put<UsersModel>(url,user)
+  editUser(user: any[]): Observable<UsersModel> {
+    const url = `${this.userUrl}/edit`;
+    return this.http.put<UsersModel>(url, user)
       .pipe(
         tap(_ => this.log("Utente Modificato")),
-        catchError(this.handleError<UsersModel>(`editUser`))
       );
-  }
-
-
-
-//stampa i messaggi di errore in console
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
   }
 
   private log(methodLog: string) {
